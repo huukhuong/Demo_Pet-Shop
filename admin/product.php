@@ -58,7 +58,7 @@ require_once('../libs/utility.php');
             foreach ($categoryList as $item) {
                 echo '<tr>
 				<td>' . ($item['MaSP']) . '</td>
-				<td><img src="' . $item['HinhAnh'] . '" style="max-width: 100px"/></td>
+				<td><img src=".' . $item['HinhAnh'] . '" style="max-width: 100px"/></td>
 				<td>' . $item['TenSP'] . '</td>
 				<td>' . $item['MaLoai'] . '</td>
 				<td>' . $item['DonGia'] . '</td>
