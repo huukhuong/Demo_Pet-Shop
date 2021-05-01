@@ -4,15 +4,24 @@ $record_per_page = 9;
 $page = 1;
 $output = '';
 
-if (isset($_POST['page'])) {
-    $page = $_POST['page'];
-}
+$filter = 1;
+// 1: min-max
+// 2: max-min
 
+if (isset($_POST['page']))
+    $page = $_POST['page'];
+if (isset($_POST['filter']))
+    $filter = $_POST['filter'];
 //==================================================
 //===================================================
 $start = ($page - 1) * $record_per_page;
 
-$query = "SELECT * FROM SanPham LIMIT $start, $record_per_page";
+
+$query = "SELECT * FROM SanPham ORDER BY DonGia ASC LIMIT $start, $record_per_page";
+if($filter == 2 ) {
+    $query ="SELECT * FROM SanPham ORDER BY DonGia DESC LIMIT $start, $record_per_page";
+}
+
 $result = mysqli_query($conn, $query);
 
 $output .= '<div class="row">';
@@ -90,4 +99,3 @@ $output .= '
 
 
 echo $output;
-?>

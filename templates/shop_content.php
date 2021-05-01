@@ -13,20 +13,22 @@
 							<form action="" method="get" accept-charset="utf-8">
 								<fieldset>
 									<div class="form-group">
-										<label>Sắp xếp: </label>
+										<label>Tên: </label>
 										<span class="cr-select">
-											<select>
-												<option>Tên: từ A-Z</option>
-												<option>Tên: từ Z-A</option>
+											<select id="select-filter-name" onchange="filterByName();">
+												<option value="0">Chọn</option>
+												<option value="1">từ A - Z</option>
+												<option value="2">từ Z - A</option>
 											</select>
 										</span>
 									</div>
 									<div class="form-group">
 										<label>Giá:</label>
 										<span class="cr-select">
-											<select>
-												<option>Thấp tới cao</option>
-												<option>Cao tới thấp</option>
+											<select id="select-filter-price" onchange="filterByPrice();">
+												<option value="0">Chọn khoảng</option>
+												<option value="1">Thấp tới cao</option>
+												<option value="2">Cao tới thấp</option>
 											</select>
 										</span>
 									</div>
@@ -55,8 +57,10 @@
 									while ($row = mysqli_fetch_assoc($result)) {
 								?>
 										<li class="categories-item">
-											<a href="" class="categories-item-link">
-												<?php echo $row['TenLoai']; ?>
+											<a href="javascript: filterCategory(1, <?php echo $row['MaLoai'] ?>)" class="categories-item-link">
+												<?php
+												echo $row['TenLoai'];
+												?>
 											</a>
 										</li>
 								<?php
@@ -192,29 +196,93 @@
 </main>
 
 <script>
-	$(document).ready(function() {
-		loadData_pagination();
+	var filterCate = false;
+	var filterName = false;
+	var filterPrice = false;
+	var idCate = 0;
+	var nameFilter = 0;
+	var priceFilter = 0;
 
-		function loadData_pagination(page) {
-			$.ajax({
-				url: "./service/pagination.php",
-				method: "POST",
-				data: {
-					page: page
-				},
-				success: function(data) {
-					$('#product-pagination').html(data);
-				}
-			});
-		}
+	loadData_pagination();
 
-		$(document).on('click', '.page-link', function() {
-			let page = $(this).attr("id");
-			loadData_pagination(page);
+	function loadData_pagination(page) {
+		filterCate = false;
+		filterName = false;
+		filterPrice = false;
+		$.ajax({
+			url: "./service/pagination.php",
+			method: "POST",
+			data: {
+				page: page
+			},
+			success: function(data) {
+				$('#product-pagination').html(data);
+			}
 		});
+	}
 
-
-		
-
+	$(document).on('click', '.page-link', function() {
+		let page = $(this).attr("id");
+		if (!filterCate && !filterName)
+			loadData_pagination(page);
+		else if (!filterName)
+			filterCategory(page, idCate);
+		else if (filterName)
+			filterByName(page);
 	});
+
+
+	function filterCategory(page, id) {
+		filterCate = true;
+		idCate = id;
+		$.ajax({
+			url: "./service/filterCategory.php",
+			method: "POST",
+			data: {
+				page: page,
+				id: id
+			},
+			success: function(data) {
+				$('#product-pagination').html(data);
+			}
+		});
+	}
+
+	function filterByName(page) {
+		nameFilter = $('#select-filter-name').find(":selected").val();
+		if (nameFilter == 0) {
+			loadData_pagination(1);
+			return;
+		}
+		$.ajax({
+			url: "./service/filterName.php",
+			method: "POST",
+			data: {
+				page: page,
+				filter: nameFilter
+			},
+			success: function(data) {
+				$('#product-pagination').html(data);
+			}
+		});
+	}
+
+	function filterByPrice(page) {
+		priceFilter = $('#select-filter-price').find(":selected").val();
+		if (priceFilter == 0) {
+			loadData_pagination(1);
+			return;
+		}
+		$.ajax({
+			url: "./service/filterPrice.php",
+			method: "POST",
+			data: {
+				page: page,
+				filter: priceFilter
+			},
+			success: function(data) {
+				$('#product-pagination').html(data);
+			}
+		});
+	}
 </script>

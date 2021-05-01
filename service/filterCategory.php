@@ -3,16 +3,17 @@ include("./config.php");
 $record_per_page = 9;
 $page = 1;
 $output = '';
+$id = 1;
 
-if (isset($_POST['page'])) {
+if (isset($_POST['page']))
     $page = $_POST['page'];
-}
-
+if (isset($_POST['id']))
+    $id = $_POST['id'];
 //==================================================
 //===================================================
 $start = ($page - 1) * $record_per_page;
 
-$query = "SELECT * FROM SanPham LIMIT $start, $record_per_page";
+$query = "SELECT * FROM SanPham WHERE MaLoai=$id LIMIT $start, $record_per_page";
 $result = mysqli_query($conn, $query);
 
 $output .= '<div class="row">';
@@ -64,7 +65,7 @@ $output .= '
             </li>
     ';
 
-$page_query = "SELECT * FROM SanPham";
+$page_query = "SELECT * FROM SanPham WHERE MaLoai=$id";
 $page_result = mysqli_query($conn, $page_query);
 $total_record = mysqli_num_rows($page_result);
 $total_pages = ceil($total_record / $record_per_page);
@@ -90,4 +91,3 @@ $output .= '
 
 
 echo $output;
-?>

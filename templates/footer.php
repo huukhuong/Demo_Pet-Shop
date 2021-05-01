@@ -25,6 +25,10 @@
 </section>
 <!-- END FOOTER -->
 
+<?php
+	include("./templates/modalProductDetail.php");
+?>
+
 
 <!-- BOOSTRAP JS -->
 <script src="./js/bootstrap-4.5/bootstrap.bundle.min.js"></script>
