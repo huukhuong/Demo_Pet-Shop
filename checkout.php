@@ -91,14 +91,16 @@
             $phonenumber = $row['DienThoai'];
         }
         ?>
-        <form action="./service/checkout-service.php">
-            <div class="md-form row">
-                <label for="fullname" class="col-sm-2 col-form-label text-right text-muted">Người nhận</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="fullname" placeholder="Họ tên">
+        <div class="container">
+            <form action="./service/checkout-service.php">
+                <div class="md-form row">
+                    <label for="fullname" class="col-sm-2 col-form-label text-right text-muted">Người nhận</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="fullname" placeholder="Họ tên" value="<?php echo $fullname ?>">
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
         <!-- INFO CUSTOMER -->
     </div>
 
