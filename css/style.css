@@ -7,6 +7,10 @@
 	background-color: #fff;
 }
 
+.navbar-brand h3 {
+	cursor: pointer;
+}
+
 .navbar.sticky {
 	box-shadow: 0 .1rem 1rem rgba(0, 0, 0, .3);
 }
@@ -502,6 +506,64 @@ section {
 .page-item.active .page-link {
 	background-color: var(--primary-color);
 	border-color: var(--primary-color);
+}
+
+/*	================================== 
+			CHI TIET SAN PHAM 
+	==================================
+*/
+
+.detail-main {
+	display: flex;
+}
+
+.detail-image {
+	width: 50%;
+	align-items: center;
+	margin-right: 6px;
+}
+
+#detail-quantity {
+	display: flex;
+}
+
+.detail-input {
+	height: 25px;
+	margin-left: 4px;
+	border: 1px solid #ccc;
+}
+
+.detail-input:focus {
+	outline: none;
+}
+
+#detail-title {
+	color: rgb(197, 0, 0);
+}
+
+.detail-description {
+	color: var(--text-color);
+	font-size: 14px;
+}
+
+.detail-price {
+	display: flex;
+	align-items: center;
+}
+
+#price-total {
+	color: red;
+	margin-left: 8px;
+}
+
+.product-order {
+	align-items: center;
+	text-align: center;
+}
+
+.hide_cell {
+	visibility: hidden;
+	border: none;
 }
 
 /* 	================================================ 

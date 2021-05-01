@@ -13,12 +13,14 @@ if (isset($_POST['maSP'])) {
         $tenSP = $row['TenSP'];
         $moTaSanPham = $row['MoTaSanPham'];
         $hinhAnh = $row['HinhAnh'];
+        $donGia = $row['DonGia'];
 
         $arr[] = array(
             "maSP" => $maSP,
             "tenSP" => $tenSP,
             "moTaSanPham" => $moTaSanPham,
-            "hinhAnh" => $hinhAnh
+            "hinhAnh" => $hinhAnh,
+            "donGia" => $donGia
         );
     }
     // chuyển array về dạng JSON cho JS xử lý

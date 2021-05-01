@@ -59,10 +59,31 @@ function showProductDetail(maSP) {
 		url: "./service/product-detail.php",
 		method: "POST",
 		data: {
-			maSP:maSP
+			maSP: maSP
 		},
-		success: function(data) {
-			console.log(data[1]['hinhAnh']);
+		success: function (data) {
+			$('#maSP').val(data[1]['maSP']);
+			$('#detail-img').attr("src", data[1]['hinhAnh']);
+			$('#detail-title').text(data[1]['tenSP']);
+			$('#detail-description').text(data[1]['moTaSanPham']);
+			var x = parseInt(data[1]['donGia']);
+			x = x.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+			$('#price-total').text(x);
+			$('#quantity').val(1);
+
+			$('#detailModal').modal('show');
 		}
 	});
+}
+
+
+function themVaoGio() {
+	if (login) {
+		window.location.href = "./service/cart-service.php?maSP=" + $('#maSP').val() + "&soLuong=" + $('#quantity').val();
+		return;
+	}
+	else {
+		alert("Bạn phải đăng nhập mới có thể mua hàng!");
+		return;
+	}
 }

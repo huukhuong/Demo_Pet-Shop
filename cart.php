@@ -124,10 +124,10 @@
     include("./templates/header.php");
     ?>
 
-    <!-- NO CART -->
     <?php
-    if (isset($_SESSION['cart'])) {
+    if (!isset($_SESSION['cart'])) {
     ?>
+        <!-- NO CART -->
         <div class="container py-5">
             <h2 class="text-center">Bạn chưa có sản phẩm nào trong giỏ hàng</h2>
             <div class="no-cart">
@@ -137,8 +137,9 @@
         <!-- NO CART -->
     <?php
     } else {
+        $cart = $_SESSION['cart'];
+        $sub_total = 0;
     ?>
-
         <!-- CART -->
         <div class="container cart-page">
             <table>
@@ -147,51 +148,44 @@
                     <th>Số lượng</th>
                     <th>Thành tiền</th>
                 </tr>
-                <tr>
-                    <td>
-                        <div class="cart-info">
-                            <img src="./img/product-img/p2.webp" class="cart__product--img">
-                            <div>
-                                <p class="cart__product-title">Thức ăn cao cấp cho chó</p>
-                                <small>Đơn giá: 200.000đ</small>
-                                <br>
-                                <a href="" class="text-danger">Xoá</a>
+
+                <?php
+                foreach ($cart as $key => $value) {
+                ?>
+                    <tr>
+                        <td>
+                            <div class="cart-info">
+                                <img src="<?php echo $value['hinhAnh'] ?>" class="cart__product--img">
+                                <div>
+                                    <p class="cart__product-title"><?php echo $value['tenSP'] ?></p>
+                                    <small>Đơn giá: <?php echo $value['donGia'] ?></small>
+                                    <br>
+                                    <a href="<?php echo "./service/cart-service.php?action=delete&maSP=" . $value['maSP']; ?>" class="text-danger">
+                                    Xoá
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td><input type="number" value="1" class="quantity-cart"></td>
-                    <td>200.000đ</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="cart-info">
-                            <img src="./img/product-img/p1.webp" class="cart__product--img">
-                            <div>
-                                <p class="cart__product-title">Thức ăn cao cấp cho chó</p>
-                                <small>Đơn giá: 200.000đ</small>
-                                <br>
-                                <a href="" class="text-danger">Xoá</a>
-                            </div>
-                        </div>
-                    </td>
-                    <td><input type="number" value="1" class="quantity-cart"></td>
-                    <td>200.000đ</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="cart-info">
-                            <img src="./img/product-img/p3.webp" class="cart__product--img">
-                            <div>
-                                <p class="cart__product-title">Thức ăn cao cấp cho chó</p>
-                                <small>Đơn giá: 200.000đ</small>
-                                <br>
-                                <a href="" class="text-danger">Xoá</a>
-                            </div>
-                        </div>
-                    </td>
-                    <td><input type="number" value="1" class="quantity-cart"></td>
-                    <td>200.000đ</td>
-                </tr>
+                        </td>
+                        <td>
+                            <form action="./service/cart-service.php">
+                                <input type="hidden" name="action" value="update">
+                                <input type="hidden" name="maSP" value="<?php echo $value['maSP'] ?>">
+                                <input type="number" name="soLuong" value="<?php echo $value['soLuong'] ?>" class="quantity-cart">
+                                <button type="submit" class="btn-warning" style="border-radius: 2px;padding: 4px;">
+                                    Cập nhật
+                                </buton>
+                            </form>
+                        </td>
+                        <td>
+                            <?php echo number_format($value['donGia'] * $value['soLuong']); ?>
+                        </td>
+                    </tr>
+                <?php
+                    $sub_total += $value['donGia'] * $value['soLuong'];
+                }
+                ?>
+
+
             </table>
 
             <div class="total-price">
@@ -201,7 +195,7 @@
                             <h4>Tổng cộng</h4>
                         </td>
                         <td>
-                            <h4>600.000đ</h4>
+                            <h4><?php echo number_format($sub_total) ?>đ</h4>
                         </td>
                     </tr>
                 </table>
