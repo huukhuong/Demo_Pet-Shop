@@ -27,7 +27,7 @@
 
 <body>
 	<?php
-	include("./templates/header.php");
+	include("./templates/header-index.php");
 	include("./templates/content.php");
 	include("./templates/footer.php");
 	?>

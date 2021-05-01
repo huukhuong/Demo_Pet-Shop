@@ -12,7 +12,7 @@
             <div class="modal-body">
                 <div class="detail-main">
                     <div class="detail-image">
-                        <img src="./img/combo0.png" alt="Hinh-anh" id="detail-img" style="width: 100%;">
+                        <img src="" alt="Hinh-anh" id="detail-img" style="width: 100%;">
                     </div>
                     <div class="detail-content">
                         <input type="number" hidden id="maSP">

@@ -131,7 +131,9 @@
 								<h5 class="card-title text-truncate"><?php echo $row['TenSP']; ?></h5>
 								<p class="card-text text-truncate" style="max-width:100%;"><?php echo $row['MoTaSanPham']; ?></p>
 								<p class="car-price"><?php echo $row['DonGia']; ?></p>
-								<a href="javascript: showProductDetail();" class="btn">Thêm vào giỏ hàng</a>
+								<a class='btn' onclick='return showProductDetail(<?php echo $row["MaSP"] ?>);'>
+									Thêm vào giỏ hàng
+								</a>
 							</div>
 						</div>
 					</div>

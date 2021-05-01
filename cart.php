@@ -24,100 +24,6 @@
 
 </head>
 
-<style>
-    .no-cart {
-        text-align: center;
-        margin: auto;
-    }
-
-    .no-cart img {
-        width: 100%;
-        height: auto;
-    }
-
-    .cart-page {
-        margin: 80px auto;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    th {
-        text-align: left;
-        padding: 5px;
-        background-color: var(--primary-color);
-        font-weight: normal;
-    }
-
-    th:last-child {
-        text-align: right;
-    }
-
-    td {
-        padding: 10px 5px;
-    }
-
-    td:last-child {
-        text-align: right;
-    }
-
-    .cart-info {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .cart__product--img {
-        width: 80px;
-        height: 80px;
-        margin-right: 10px;
-    }
-
-    .cart__product-title {
-        font-size: 1.2rem;
-        margin-bottom: 2px;
-    }
-
-    .quantity-cart {
-        width: 40px;
-        height: 30px;
-        padding: 5px;
-        border: 1px solid #ccc !important;
-        text-align: center;
-        border-radius: 2px;
-    }
-
-    /* Chrome, Safari, Edge, Opera */
-    .quantity-cart::-webkit-outer-spin-button,
-    .quantity-cart::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    /* Firefox */
-    .quantity-cart[type=number] {
-        -moz-appearance: textfield;
-    }
-
-    .total-price {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .total-price table {
-        border-top: 3px solid var(--primary-color);
-        width: 100%;
-        max-width: 400px;
-    }
-
-    @media (max-width: 600px) {
-        .cart__product-title {
-            display: none;
-        }
-    }
-</style>
-
 <body>
 
     <?php
@@ -161,7 +67,7 @@
                                     <small>Đơn giá: <?php echo $value['donGia'] ?></small>
                                     <br>
                                     <a href="<?php echo "./service/cart-service.php?action=delete&maSP=" . $value['maSP']; ?>" class="text-danger">
-                                    Xoá
+                                        Xoá
                                     </a>
                                 </div>
                             </div>
@@ -173,7 +79,7 @@
                                 <input type="number" name="soLuong" value="<?php echo $value['soLuong'] ?>" class="quantity-cart">
                                 <button type="submit" class="btn-warning" style="border-radius: 2px;padding: 4px;">
                                     Cập nhật
-                                </buton>
+                                    </buton>
                             </form>
                         </td>
                         <td>
@@ -196,6 +102,13 @@
                         </td>
                         <td>
                             <h4><?php echo number_format($sub_total) ?>đ</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <a href="./checkout.php" class="btn">Thanh toán ngay</a>
                         </td>
                     </tr>
                 </table>
