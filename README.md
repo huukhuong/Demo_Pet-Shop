@@ -4,7 +4,7 @@
 |1   | 3119410180      | [Ngô Phú Khang](https://www.facebook.com/ngokhang2001sgunkey/)               |
 |2   | 3119410204      | [Trần Hữu Khương](https://www.facebook.com/JB.TranHuuKhuong/)                |
 |3   | 3119410215      | [Võ Hoàng Kiệt](https://www.facebook.com/thekids.1002/)                      |
-|4   | 3119410354      | [Lê Thái Thanh Sơn](https://www.facebook.com/profile.php?id=100041348190068/)|
+|4   | 3119410354      | [Lê Thái Thanh Sơn](https://www.facebook.com/profile.php?id=100041348190068)|
 ### Hướng dẫn:
 1. Tạo database MySQL có tên "petshop".
 2. Thực hiện import file "./database/petshop.sql"
