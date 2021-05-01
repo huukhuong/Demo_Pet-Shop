@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng</title>
+    <!-- BOOTSTRAP 4.5 -->
+    <link rel="stylesheet" href="./css/bootstrap-4.5/bootstrap.min.css">
+    <!-- FONTAWESOME 5.15.3-->
+    <link rel="stylesheet" href="./fonts/fontawesome-5.15.3/css/all.min.css">
+    <!-- RESET CSS -->
+    <link rel="stylesheet" href="./css/normalize.css">
+    <!-- OWL CAROUSEL -->
+    <link rel="stylesheet" href="./css/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl-carousel/owl.theme.default.min.css">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="./css/base.css">
+
+    <!-- JQUERY 3.5.1 -->
+    <script src="./js/jquery-3.5.1/jquery-3.3.1.slim.min.js"></script>
+
+</head>
+
+<style>
+    .cart-img {
+        width: 120px;
+    }
+
+    .quantity-cart {
+        width: 30%;
+        margin: auto;
+        border: 1px solid #ccc !important;
+        text-align: center;
+        padding: 6px 0;
+        border-radius: 2px;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    .quantity-cart::-webkit-outer-spin-button,
+    .quantity-cart::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    .quantity-cart[type=number] {
+        -moz-appearance: textfield;
+    }
+
+</style>
+
+<body>
+
+    <!-- Cart -->
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table cart-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Sản phẩm</th>
+                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Thành tiền</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="align-middle">
+                            <img src="./img/product-img/p2.webp" alt="" class="cart-img">
+                        </td>
+                        <td class="align-middle">
+                            <h5>Thức ăn cao cấp cho chó</h5>
+                        </td>
+                        <td class="align-middle">120.000đ</td>
+                        <td class="align-middle">
+                            <input type="number" name="" value="1" class="quantity-cart">
+                        </td>
+                        <td class="align-middle">120.000đ</td>
+                        <td class="align-middle">
+                            <a href="" class="btn">Xoá</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">
+                            <img src="./img/product-img/p2.webp" alt="" class="cart-img">
+                        </td>
+                        <td class="align-middle">
+                            <h5>Thức ăn cao cấp cho chó</h5>
+                        </td>
+                        <td class="align-middle">120.000đ</td>
+                        <td class="align-middle">
+                            <input type="number" name="" value="1" class="quantity-cart">
+                        </td>
+                        <td class="align-middle">120.000đ</td>
+                        <td class="align-middle">
+                            <a href="" class="btn">Xoá</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">
+                            <img src="./img/product-img/p2.webp" alt="" class="cart-img">
+                        </td>
+                        <td class="align-middle">
+                            <h5>Thức ăn cao cấp cho chó</h5>
+                        </td>
+                        <td class="align-middle">120.000đ</td>
+                        <td class="align-middle">
+                            <input type="number" name="" value="1" class="quantity-cart">
+                        </td>
+                        <td class="align-middle">120.000đ</td>
+                        <td class="align-middle">
+                            <a href="" class="btn">Xoá</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="#" class="btn ml-auto d-block">Đặt hàng ngay</a>
+    </div>
+    <!-- End Cart -->
+
+</body>
+
+</html>

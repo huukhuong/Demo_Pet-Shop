@@ -26,8 +26,10 @@
 <!-- END FOOTER -->
 
 
-<!-- JQUERY 3.5.1 -->
-<script src="./js/jquery-3.5.1/jquery-3.3.1.slim.min.js"></script>
 <!-- BOOSTRAP JS -->
 <script src="./js/bootstrap-4.5/bootstrap.bundle.min.js"></script>
 <script src="./js/bootstrap-4.5/bootstrap.min.js"></script>
+<!-- OWL CAROUSEL JS -->
+<script src="./js/owl-carousel/owl.carousel.min.js"></script>
+<!-- CUSTOM JS -->
+<script src="./js/main.js"></script>

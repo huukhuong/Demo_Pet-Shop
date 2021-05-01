@@ -18,20 +18,20 @@
 	<!-- CUSTOM CSS -->
 	<link rel="stylesheet" href="./css/base.css">
 	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/content.css">
+
+	<!-- JQUERY 3.5.1 -->
+	<script src="./js/jquery-3.5.1/jquery-3.3.1.slim.min.js"></script>
 
 </head>
 
 <body>
 	<?php
 	include("./templates/header.php");
-	include("./templates/index-content.php");
+	include("./templates/content.php");
 	include("./templates/footer.php");
 	?>
 
-	<!-- OWL CAROUSEL JS -->
-	<script src="./js/owl-carousel/owl.carousel.min.js"></script>
-	<!-- CUSTOM JS -->
-	<script src="./js/main.js"></script>
 </body>
 
 </html>

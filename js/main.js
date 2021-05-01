@@ -50,4 +50,19 @@ $(document).ready(function () {
 		}
 	});
 
+
+
 });
+
+function showProductDetail(maSP) {
+	$.ajax({
+		url: "./service/product-detail.php",
+		method: "POST",
+		data: {
+			maSP:maSP
+		},
+		success: function(data) {
+			console.log(data[1]['hinhAnh']);
+		}
+	});
+}

@@ -1,9 +1,9 @@
 <?php
-	session_start();
+session_start();
 ?>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 	<div class="container">
 		<a class="navbar-brand" href="./index.php">
 			<h3 style="text-transform: uppercase;">3KS PetShop</h3>
@@ -36,17 +36,41 @@
 					<a class="nav-link nav-icon" id="search-btn" href="#search">
 						<i class="fas fa-search"></i></a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link nav-icon" href="#"><i class="fas fa-user-circle"></i></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link nav-icon" href="#"><i class="fas fa-shopping-cart"></i></a>
 
-					<div id="cart-dropdown">
-						<div class="content-cart container">
-							
+				<li class="nav-item drop-down">
+					<?php
+					if (!isset($_SESSION['username'])) {
+					?>
+						<a class="nav-link nav-icon" type="button" data-toggle="modal" data-target="#loginModal">
+							<i class="fas fa-user-circle"></i>
+						</a>
+					<?php
+					} else {
+					?>
+						<a class="nav-link nav-icon">
+							<i class="fas fa-user-circle"></i>
+						</a>
+						<div class="drop-down-box">
+							<ul class="drop-down-list">
+								<li class="drop-down-item">
+									<a href="user.php" class="drop-down-link">
+										Chi tiết tài khoản									
+									</a>
+								</li>
+								<li class="drop-down-item">
+									<a href="./service/logout.php" class="drop-down-link">
+										Đăng xuất
+									</a>
+								</li>
+							</ul>
 						</div>
-					</div>
+					<?php
+					}
+					?>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link nav-icon" href="./cart.php"><i class="fas fa-shopping-cart"></i></a>
 				</li>
 			</ul>
 		</div>
@@ -60,3 +84,8 @@
 	</div>
 </nav>
 <!-- END NAVBAR -->
+
+<?php
+include("./templates/login.php");
+include("./templates/register.php");
+?>
