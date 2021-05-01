@@ -76,7 +76,7 @@
         <!-- END CART -->
 
         <!-- INFO CUSTOMER -->
-        <h2 class="text-center my-4">Thông tin giao hàng</h2>
+        <h2 class="text-center my-4 pt-2 border-top">Thông tin giao hàng</h2>
         <?php
         include "./service/config.php";
         $id = "";
@@ -92,12 +92,31 @@
         }
         ?>
         <div class="container">
-            <form action="./service/checkout-service.php">
-                <div class="md-form row">
+            <form>
+                <input type="hidden" id="id" value="<?php echo $id ?>">
+                <input type="hidden" id="total" value="<?php echo $sub_total ?>">
+
+                <div class="md-form row mt-2">
                     <label for="fullname" class="col-sm-2 col-form-label text-right text-muted">Người nhận</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="fullname" placeholder="Họ tên" value="<?php echo $fullname ?>">
+                        <input type="text" class="form-control text-dark" id="fullname" placeholder="vd: Nguyễn Văn Anh" value="<?php echo $fullname ?>">
                     </div>
+                </div>
+                <div class="md-form row mt-2">
+                    <label for="phonenumber" class="col-sm-2 col-form-label text-right text-muted">Điện thoại</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control text-dark" id="phonenumber" placeholder="vd: 077668235" value="<?php echo $phonenumber ?>">
+                    </div>
+                </div>
+                <div class="md-form row mt-2">
+                    <label for="address" class="col-sm-2 col-form-label text-right text-muted">Địa chỉ nhận hàng</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control text-dark" id="address" rows="3" placeholder="vd: 123 Cao Lỗ, Phường 4, Quận 8"></textarea>
+                        <small id="err-address" class="text-danger d-none">Không được để trống địa chỉ</small>
+                    </div>
+                </div>
+                <div class="md-form row mt-2">
+                    <button class="btn mx-auto" type="submit" id="btnCheckout">Tiến hành đặt hàng</button>
                 </div>
             </form>
         </div>
@@ -108,6 +127,48 @@
     include("./templates/footer.php");
     ?>
 
+    <script>
+        $(document).ready(function() {
+            $('#btnCheckout').click(function() {
+                $('#err-address').addClass('d-none');
+                $('#address').css('border-color', '#ccc');
+
+                let flag = true;
+                let maKH = $('#id').val();
+                let tongTien = $('#total').val();
+                let address = $('#address').val();
+                
+                if (address.trim() == "") {
+                    $('#address').css('border-color', 'red');
+                    $('#err-address').removeClass('d-none');
+                    flag = false;
+                }
+
+                if (!flag)
+                    return false;
+
+
+                $.ajax({
+                    url: "./service/checkout-service.php",
+                    method: "POST",
+                    data: {
+                        maKH: maKH,
+                        tongTien: tongTien,
+                        diaChi: address
+                    },
+                    success: function(data) {
+                        if (data == 1) {
+                            alert("Mua hàng thành công");
+                            window.location.href="./cart.php";
+                        } else {
+                            alert("Mua hàng thất bại");
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
 </body>
 
 </html>
