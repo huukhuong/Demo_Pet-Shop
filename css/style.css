@@ -156,8 +156,13 @@ section {
 */
 
 .category .card {
+	height: 100%;
 	width: 100%;
 	text-align: center;
+}
+
+.category .card-img-top {
+	height: 300px;
 }
 
 .category .card:hover {

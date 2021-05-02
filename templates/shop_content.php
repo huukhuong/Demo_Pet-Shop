@@ -8,39 +8,12 @@
 						<div class="shop__title-top">
 							<h2><span>Sự lựa chọn của mọi người</span>Giá tốt nhất ở 3KS</h2>
 						</div>
-						<div class="shop-sort">
-							<span>Bộ lọc</span>
-							<form action="" method="get" accept-charset="utf-8">
-								<fieldset>
-									<div class="form-group">
-										<label>Tên: </label>
-										<span class="cr-select">
-											<select id="select-filter-name" onchange="filterByName();">
-												<option value="0">Chọn</option>
-												<option value="1">từ A - Z</option>
-												<option value="2">từ Z - A</option>
-											</select>
-										</span>
-									</div>
-									<div class="form-group">
-										<label>Giá:</label>
-										<span class="cr-select">
-											<select id="select-filter-price" onchange="filterByPrice();">
-												<option value="0">Chọn khoảng</option>
-												<option value="1">Thấp tới cao</option>
-												<option value="2">Cao tới thấp</option>
-											</select>
-										</span>
-									</div>
-								</fieldset>
 
-							</form>
-						</div>
 					</div>
 				</div>
 
 				<!-- CATEGORY -->
-				<div class="col-3">
+				<div class="col-lg-3 col-12">
 					<div class="content-left">
 						<div class="shop-categories">
 							<div class="shop-content-top">
@@ -185,7 +158,33 @@
 
 
 				<!-- PRODUCT -->
-				<div class="col-9" id="product-pagination">
+				<div class="col-lg-9 col-12">
+					<div class="shop-sort">
+						<form action="" method="get" accept-charset="utf-8" class="row">
+								<div class="form-group col-md-3 mx-2 mt-2">
+									<label>Tên: </label>
+									<span class="cr-select">
+										<select id="select-filter-name" onchange="filterByName();">
+											<option value="0">Chọn</option>
+											<option value="1">từ A - Z</option>
+											<option value="2">từ Z - A</option>
+										</select>
+									</span>
+								</div>
+								<div class="form-group col-md-3 mx-2 mt-2">
+									<label>Giá:</label>
+									<span class="cr-select">
+										<select id="select-filter-price" onchange="filterByPrice();">
+											<option value="0">Chọn khoảng</option>
+											<option value="1">Thấp tới cao</option>
+											<option value="2">Cao tới thấp</option>
+										</select>
+									</span>
+								</div>
+						</form>
+					</div>
+
+					<div id="product-pagination"></div>
 					<!-- Đổ database phân trang -->
 				</div>
 				<!-- END PRODUCT -->

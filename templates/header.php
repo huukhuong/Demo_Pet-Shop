@@ -14,6 +14,18 @@ if (!isset($_SESSION))
         </button>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.php">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./shop.php">Sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.php#contact">Liên hệ</a>
+                </li>
+            </ul>
+
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0 d-flex">
                 <li class="nav-item">
                     <a class="nav-link nav-icon" id="search-btn" href="#search">
@@ -23,14 +35,12 @@ if (!isset($_SESSION))
                 <li class="nav-item drop-down">
                     <?php
                     if (!isset($_SESSION['username'])) {
-                        echo '<script>var login=false;</script>';
                     ?>
                         <a class="nav-link nav-icon" type="button" data-toggle="modal" data-target="#loginModal">
                             <i class="fas fa-user-circle"></i>
                         </a>
                     <?php
                     } else {
-                        echo '<script>var login=true;</script>';
                     ?>
                         <a class="nav-link nav-icon">
                             <i class="fas fa-user-circle"></i>

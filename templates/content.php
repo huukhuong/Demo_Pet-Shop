@@ -10,50 +10,32 @@
 
 <!-- CATEGORY -->
 <section class="category" id="category">
-	<h1 class="heading"><i class="fas fa-paw"></i> Danh mục <i class="fas fa-paw"></i></h1>
+	<h1 class="heading my-2"><i class="fas fa-paw"></i> Danh mục <i class="fas fa-paw"></i></h1>
 
 	<div class="container">
-		<div class="row">
-			<div class="col-lg-3 col-md-6 col-12 mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-4 col-12 mt-5" style="width: 100%;">
 				<div class="card">
-					<img class="card-img-top" src="./img/page-img/c1.webp" alt="">
+					<img class="card-img-top" src="./img/page-img/cate1.jpg">
 					<div class="card-body">
-						<h5 class="card-title">Thức ăn cho chó</h5>
+						<h5 class="card-title">Thức ăn thú cưng</h5>
 						<a href="./shop.php" class="btn">Xem ngay</a>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-lg-3 col-md-6 col-12 mt-5">
+			<div class="col-md-4 col-12 mt-5">
 				<div class="card">
-					<img class="card-img-top" src="./img/page-img/c2.webp" alt="">
+					<img class="card-img-top" src="./img/page-img/cate2.jpg">
 					<div class="card-body">
-						<h5 class="card-title">Thức ăn cho mèo</h5>
+						<h5 class="card-title">Phụ kiện, đồ chơi</h5>
 						<a href="./shop.php" class="btn">Xem ngay</a>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-lg-3 col-md-6 col-12 mt-5">
-				<div class="card">
-					<img class="card-img-top" src="./img/page-img/c3.webp" alt="">
-					<div class="card-body">
-						<h5 class="card-title">Thức ăn cho thỏ</h5>
-						<a href="./shop.php" class="btn">Xem ngay</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 col-12 mt-5">
-				<div class="card">
-					<img class="card-img-top" src="./img/page-img/c4.webp" alt="">
-					<div class="card-body">
-						<h5 class="card-title">Thức ăn cho chim</h5>
-						<a href="./shop.php" class="btn">Xem ngay</a>
-					</div>
-				</div>
-			</div>
 		</div>
+	</div>
 
 </section>
 <!-- END CATEGORY -->
@@ -130,7 +112,11 @@
 							<div class="card-body">
 								<h5 class="card-title text-truncate"><?php echo $row['TenSP']; ?></h5>
 								<p class="card-text text-truncate" style="max-width:100%;"><?php echo $row['MoTaSanPham']; ?></p>
-								<p class="car-price"><?php echo $row['DonGia']; ?></p>
+								<p class="car-price">
+									<?php
+									echo number_format($row['DonGia'], 0, '', ',') . 'đ';;
+									?>
+								</p>
 								<a class='btn' onclick='return showProductDetail(<?php echo $row["MaSP"] ?>);'>
 									Thêm vào giỏ hàng
 								</a>

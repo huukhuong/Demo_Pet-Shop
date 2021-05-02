@@ -41,14 +41,12 @@ if (!isset($_SESSION))
 				<li class="nav-item drop-down">
 					<?php
 					if (!isset($_SESSION['username'])) {
-						echo '<script>var login=false;</script>';
 					?>
 						<a class="nav-link nav-icon" type="button" data-toggle="modal" data-target="#loginModal">
 							<i class="fas fa-user-circle"></i>
 						</a>
 					<?php
 					} else {
-						echo '<script>var login=true;</script>';
 					?>
 						<a class="nav-link nav-icon">
 							<i class="fas fa-user-circle"></i>
