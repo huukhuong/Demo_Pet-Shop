@@ -10,4 +10,5 @@
 2. Thực hiện import file "./database/petshop.sql"
 3. Để vào quản lý admin, truy cập đường dẫn: "localhost/Demo_Pet-Shop/admin/"
 ## Được viết bằng bootstrap-4, jquery-3.2.1, chạy tốt nhất trên GoogleChrome (riêng trang Sản phẩm bất lực quá nên không responsive)
-### Đồ án được thực hiện trong vòng 2 ngày nên chức năng không đầy đủ, chịu không chịu thì chịu
+#### Cập nhật: Đã responsive trang sản phẩm, dù hơi chuối nhưng tạm chấp nhận
+### Đồ án được thực hiện trong vòng 2 ngày nên chức năng không đầy đủ, chịu không chịu cũng phải chịu
