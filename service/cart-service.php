@@ -3,8 +3,10 @@
 include("./config.php");
 session_start();
 
-// session_destroy();
-// die();
+if(!isset($_SESSION['username'])) {
+    echo 0;
+    die();
+}
 
 if (isset($_GET['maSP'])) {
 
@@ -34,7 +36,7 @@ if (isset($_GET['maSP'])) {
                 // THÊM MỚI VÀO GIỎ HÀNG
                 $_SESSION['cart'][$maSP] = $item;
             }
-            header("Location: ../shop.php");
+            echo 1;
             die();
         }
 

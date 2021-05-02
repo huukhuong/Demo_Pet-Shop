@@ -78,12 +78,27 @@ function showProductDetail(maSP) {
 
 
 function themVaoGio() {
-	if (login) {
-		window.location.href = "./service/cart-service.php?maSP=" + $('#maSP').val() + "&soLuong=" + $('#quantity').val();
-		return;
-	}
-	else {
-		alert("Bạn phải đăng nhập mới có thể mua hàng!");
-		return;
-	}
+	// if (login) {
+	// window.location.href = "./service/cart-service.php?maSP=" + $('#maSP').val() + "&soLuong=" + $('#quantity').val();
+
+	$.ajax({
+		url: "./service/cart-service.php",
+		method: "GET",
+		data: {
+			maSP: $('#maSP').val(),
+			soLuong: $('#quantity').val()
+		},
+		success: function (res) {
+			if (res == 1)
+				alert("Thêm thành công!");
+			else alert("Bạn phải đăng nhập mới có thể mua hàng!");
+		}
+	});
+
+	return;
+	// }
+	// else {
+	// 	alert("Bạn phải đăng nhập mới có thể mua hàng!");
+	// 	return;
+	// }
 }
