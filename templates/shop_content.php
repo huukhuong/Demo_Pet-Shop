@@ -161,7 +161,7 @@
 				<div class="col-lg-9 col-12">
 					<div class="shop-sort">
 						<form action="" method="get" accept-charset="utf-8" class="row">
-								<div class="form-group col-md-3 mx-2 mt-2">
+								<div class="form-group mx-2 mt-2">
 									<label>Tên: </label>
 									<span class="cr-select">
 										<select id="select-filter-name" onchange="filterByName();">
@@ -171,7 +171,7 @@
 										</select>
 									</span>
 								</div>
-								<div class="form-group col-md-3 mx-2 mt-2">
+								<div class="form-group mx-2 mt-2">
 									<label>Giá:</label>
 									<span class="cr-select">
 										<select id="select-filter-price" onchange="filterByPrice();">
