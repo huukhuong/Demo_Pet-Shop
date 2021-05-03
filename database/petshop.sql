@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 01, 2021 lúc 05:27 PM
+-- Thời gian đã tạo: Th5 02, 2021 lúc 05:15 PM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 7.4.16
 
@@ -46,17 +46,6 @@ CREATE TABLE `cthoadon` (
   `DonGia` int(11) NOT NULL,
   `ThanhTien` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `cthoadon`
---
-
-INSERT INTO `cthoadon` (`MaHD`, `MaSP`, `SoLuong`, `DonGia`, `ThanhTien`) VALUES
-(5, 1, 1, 100000, 100000),
-(5, 3, 1, 16000, 16000),
-(6, 6, 12, 49999, 599988),
-(6, 35, 4, 240000, 960000),
-(6, 44, 2, 50000, 100000);
 
 -- --------------------------------------------------------
 
@@ -246,41 +235,39 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `MaLoai`, `SoLuong`, `DonViTinh`, `HinhAnh`, `DonGia`, `MoTaSanPham`) VALUES
-(1, 'Thức ăn cho chó', 1, 1000, 'Cái', '', 100000, 'Thức ăn cho chó ROYAL CANIN  German Shepherd Puppy dành riêng cho giống chó Béc giê (GSD) con dưới 15 tháng tuổi.'),
-(2, 'Thức ăn cho chó con ROYAL CANIN German Shepherd Puppy', 1, 1000, 'Hộp', './img/thucan/thucanROYALCANIN.jpg', 15000, 'Thức ăn cho chó ROYAL CANIN  German Shepherd Puppy dành riêng cho giống chó Béc giê (GSD) con dưới 15 tháng tuổi.'),
-(3, 'Thức ăn cho chó con JOSERA Young Star', 1, 1000, 'Hộp', './img/thucan/thuc-an-cho-cho-con-josera-young-star-400x400.jpg', 16000, ' Thức ăn cho chó JOSERA  Josidog Junior hoàn chỉnh cho chó phát triển'),
-(4, 'Thức ăn cho chó già ROYAL CANIN Poodle Adult 8+', 1, 1000, 'Hộp', './img/thucan/thuc-an-cho-cho-gia-royal-canin-poodle-adult-8-400x400.jpg', 18000, 'Thức ăn cho chó  già ROYAL CANIN Poodle Adult 8+ hoàn chỉnh cho chó phát triển.'),
-(5, 'Thức ăn cho chó vị thịt vịt ANF Organic 6 Free Duck', 1, 1000, 'Hộp', './img/thucan/thuc-an-cho-cho-vi-thit-vit-anf-organic-6-free-duck-0-400x400.jpg', 95000, 'Thức ăn cho chó vị thịt vịt ANF Organic 6 Free Duck hoàn chỉnh cho chó phát triển.'),
-(6, 'Mũ cho chó mèo AMBABY PET 1JXS071', 2, 20, 'VNĐ', './img/dochoi/mu-cho-cho-meo-ambaby-pet-1jxs071-400x400.jpg', 49999, 'Mũ cho chó mèo AMBABY PET  1JXS071 là sản phẩm dành cho tất cả giống chó và mèo'),
-(7, 'Quần áo cho chó mèo AMBABY PET 2JXF163', 2, 20, 'Cái', './img/dochoi/quan-ao-cho-cho-meo-ambaby-pet-2jxf163-400x400.jpg', 249999, 'Quần áo cho chó mèo AMBABY PET  2JXF163 là sản phẩm dành cho cả chó và mèo.'),
-(8, 'Mũ cho chó mèo AMBABY PET 1JXS00', 2, 20, 'Cái', './img/dochoi/mu-cho-cho-meo-ambaby-pet-1jxs003-400x400.jpg', 19999, 'Mũ cho chó mèo AMBABY PET 1JXS00 là sản phẩm dành cho tất cả giống chó và mèo'),
-(9, 'Quần áo cho chó mèo AMBABY PET 2JXF171', 2, 20, 'Cái', './img/dochoi/quan-ao-cho-cho-meo-ambaby-pet-2jxf171-400x400.jpg', 249999, 'Quần áo cho chó mèo AMBABY PET 2JXF171 là sản phẩm dành cho cả chó và mèo.'),
-(10, 'Xích cho chó đai ngực phản quang HAND IN HAND Reflective & Adjustable', 2, 20, 'Cái', './img/dochoi/xich-cho-cho-dai-nguc-phan-quang-hand-in-hand-reflective-adjustable-0-400x400.jpg', 199999, ' Xích cho chó đai ngực phản quang HAND IN HAND  Reflective & Adjustable là sản phẩm dành cho tất cả giống chó'),
-(11, 'Dây dắt cho chó mèo tự động DELE 001S', 2, 20, 'Cái', './img/dochoi/day-dat-cho-cho-meo-tu-dong-dele-001s-400x400.jpg', 349999, ' Dây dắt cho chó mèo tự động DELE  001S là sản phẩm phù hợp cho những giống chó dưới 15kg'),
-(12, 'Dây dắt cho chó mèo tự động DELE 005G\r\n', 2, 500, 'Cái', './img/dochoi/day-dat-cho-cho-meo-tu-dong-dele-005g-400x400.jpg', 79000, ' Dây dắt cho chó mèo tự động DELE  005G là sản phẩm phù hợp cho những giống chó dưới 15kg'),
-(13, 'Dây dắt cho chó mèo tự động DELE 005G', 2, 500, 'Cái', './img/dochoi/day-dat-cho-cho-meo-tu-dong-dele-005g-400x400.jpg', 79000, ' Dây dắt cho chó mèo tự động DELE  005G là sản phẩm phù hợp cho những giống chó dưới 15kg'),
-(14, 'Quần áo cho chó mèo AMBABY PET 2JXF248', 2, 500, 'Cái', './img/dochoi/quan-ao-cho-cho-meo-ambaby-pet-2jxf248-400x400.jpg', 89000, 'Quần áo cho chó mèo AMBABY PET 2JXF248 là sản phẩm dành cho cả chó và mèo. là sản phẩm dành cho cả chó và mèo. là sản phẩm dành cho cả chó và mèo.'),
-(15, 'Mũ cho chó mèo AMBABY PET 1JXS081', 2, 500, 'Cái', './img/dochoi/day-dat-cho-cho-meo-tu-dong-dele-005g-400x400.jpg', 79000, 'Mũ cho chó mèo AMBABY PET 1JXS081 là sản phẩm dành cho tất cả giống chó và mèo'),
-(16, 'Tã bỉm cho chó mèo cái 1 – 3kg VET’S BEST Disposable Diapers XXSmall', 2, 500, 'Cái', './img/dochoi/ta-bim-cho-cho-meo-cai-1-3kg-vets-best-disposable-diapers-xxsmall-400x400.jpg', 89000, 'Tã bỉm cho chó mèo cái 1 – 3kg VETS BEST Disposable Diapers XXSmall là giải pháp đơn giản và hiệu quả cho thú cưng của bạn bị tiểu tiện bừa bãi và khi chó cái đến giai đoạn đèn đỏ. Tã bỉm cho chó có kích thước vừa vặn với thú cưng 1 – 3 kg. Sản phẩm có đường chỉ cho biết độ ẩm để bạn biết khi nào cần thay bỉm cho chó. Mỗi chiếc tã đều có một rào chắn hạn chế sự rò rỉ nước ra ngoài. An toàn lông và cố định vị trí cho chó dễ dàng đi vệ sinh mọi lúc mọi nơi. Kích thước: 22 – 40cm.'),
-(17, 'Miếng lót cho chó đi vệ sinh IRIS Clean Pet Sheets CPS-42W', 2, 500, 'Cái', './img/dochoi/mieng-lot-cho-cho-di-ve-sinh-iris-clean-pet-sheets-cps-42w-400x400.jpg', 99000, ' Miếng lót cho chó đi vệ sinh IRIS  Clean Pet Sheets CPS-42W được dùng cho tất cả giống chó. Bịch 42 miếng.'),
-(27, 'Thức ăn cho chó trưởng thành Nature\'s Protection Lifestyle cá trắng 1.5kg', 1, 1, 'Túi', './img/sanpham/4665_unnamed11.jpg', 280000, 'Nature’s Protection Lifestyle Grain Free White Fish Thức ăn không ngũ cốc giàu cá trắng dành cho chó trưởng thành thuộc tất cả các giống chó 1,5 kg'),
-(28, 'Thức ăn dành cho chó trưởng thành thuộc giống chó nhỏ Nature’s Protection cá hồi 500 gram ', 1, 1, 'Túi', './img/sanpham/4658_unnamed7.jpg', 136000, 'Nature’s Protection Mini Extra Salmon Thức ăn giàu cá hồi dành cho chó trưởng thành thuộc giống chó nhỏ 500 gram'),
-(29, 'Thức ăn dành cho chó trưởng thành thuộc giống chó nhỏ Nature’s Protection cá hồi 500 gram ', 1, 1, 'Túi', './img/sanpham/4658_unnamed7.jpg', 136000, 'Nature’s Protection Mini Extra Salmon Thức ăn giàu cá hồi dành cho chó trưởng thành thuộc giống chó nhỏ 500 gram'),
-(30, 'Thức ăn hạt hữu cơ cho chó vị cừu ANF 6 Free 400g', 1, 1, 'Túi', './img/sanpham/4684_vi-cuu-1581503190.jpg', 150000, 'Hạt có thành phần tự nhiên cung cấp carbohydrates, chất xơ, các chất vitamin, khoáng chất và có tác dụng chống oxy hóa, chống lão hóa, chống ung thư, giảm lượng đường trong máu và cholesterol và tốt cho thận'),
-(31, 'Thức ăn hạt hữu cơ cho chó vị cá hồi ANF 6 Free 400g', 1, 1, 'Túi', './img/sanpham/4683_vi-ca-hoi-1581503019.jpg', 200000, 'Sản phẩm thức ăn hạt cho chó lớn hơn 6 tháng tuổi ANF 6 Free Organic vị cá hồi được cấu tạo từ nguồn nguyên liệu vô cùng an toàn, đảm bảo cho sức khỏe của thú cưng.'),
-(32, 'Thức ăn dành cho chó trưởng thành Araton thịt cừu 3 kg ', 1, 1, 'Túi', './img/sanpham/4672_unnamed14.jpg', 240000, 'Thích hợp cho hệ tiêu hóa nhạy cảm: Dinh dưỡng hoàn hảo được bổ sung thịt cừu, là nguồn cung cấp proteins, với các đặc tính tốt cho tiêu hóa nhằm giúp phân nhỏ và định hình ổn định.'),
-(33, 'Thức ăn hạt hữu cơ cho chó vị vịt ANF 6 Free 400g', 1, 1, 'Túi', './img/sanpham/4685_vi-vit-1581502938.jpg', 230000, 'Sản phẩm ANF - Thức ăn hạt cho chó vị vịt được cấu tạo bởi những nguyên liệu tự nhiên, có đầy đủ các thành phần dưỡng chất cho cơ thể của mọi chú chó. Chúng tôi cam kết không sử dụng những chất gây hại hay hóa học nhưng chỉ sử dụng nguyên liệu đã qua khâu kiểm tra sát sao để chế biến ra sản phẩm tốt nhất trên thị trường.'),
-(34, 'Thức ăn dành cho chó trưởng thành Araton cá hồi 3 kg ', 1, 1, 'Túi', './img/sanpham/4673_674b58a45293d91211588d4d35bb2e38.jpg', 410000, 'Hàm lượng vitamin E tối ưu, một chất chống oxy hóa tự nhiên, giúp tăng cường hệ thống miễn dịch và khả năng kháng bệnh của thú cưng. Dinh dưỡng hoàn hảo được bổ sung thịt cừu, là nguồn cung cấp proteins, với các đặc tính tốt cho tiêu hóa nhằm giúp phân nhỏ và định hình ổn định.'),
-(35, 'Thức ăn dành cho mèo trưởng thành Araton cá hồi 1.5 kg ', 1, 1, 'Túi', './img/sanpham/4674_ART45646-425x600.jpg', 240000, 'Tốt cho da và lông: Một tỷ lệ hỗn hợp cân bằng gồm axit béo Omega-3 và Omega-6, biotin, kẽm và vitamin B6 giúp duy trì làn da khỏe mạnh và lông bóng mượt.'),
-(36, 'Thức ăn cho mèo con Catsrang Kitten 1.5kg', 1, 1, 'Túi', './img/sanpham/4335_catsrang-5-kg-1581587183.jpg', 240000, 'Hàm lượng vitamin E tối ưu, một chất chống oxy hóa tự nhiên, giúp tăng cường hệ thống miễn dịch và khả năng kháng bệnh của thú cưng.'),
-(37, 'Thức ăn dành cho mèo trưởng thành Nature’s Protection thịt gia cầm 400 gram ', 1, 1, 'Túi', './img/sanpham/4661_NP_Indoor-400g-424x600.jpg', 146000, 'Sản phẩm giàu chất xơ, đặc biệt dễ tiêu hóa giúp ngăn ngừa sự hình thành búi lông trong dạ dày, an toàn và dễ dàng loại bỏ chúng khỏi đường ruột. Tốt cho đường tiết niệu: Giảm lượng magiê giúp tránh sự hình thành các tinh thể sỏi trong đường tiết niệu.'),
-(38, 'Thức ăn cho mèo con dưới 1 năm tuổi Nature’s Protection tôm Krill 400 gram ', 1, 1, 'Túi', './img/sanpham/4660_NP_Kitten-400g-424x600.jpg', 136000, 'Công thức được nghiên cứu bởi các bác sĩ thú y và chuyên gia dinh dưỡng, giúp mèo con vượt qua giai đoạn cai sữa khó khăn trong điều kiện tối ưu, đảm bảo một khởi đầu tốt trong cuộc sống.'),
-(39, 'Áo thun hạc chanel sọc xanh size 4', 2, 1, 'Cái', './img/sanpham/4606_121066314_1308414889496585_5054189178317612641_o.jpg', 80000, 'Với thiết kế tinh tế của áo thun, Boss sẽ nổi bật và ấm áp hơn khi cùng Sen dạo phố đón những cơn gió đầu mùa.'),
-(40, 'Áo thun hạc chanel sọc xanh size 4', 2, 1, 'Cái', './img/sanpham/4606_121066314_1308414889496585_5054189178317612641_o.jpg', 80000, 'Với thiết kế tinh tế của áo thun, Boss sẽ nổi bật và ấm áp hơn khi cùng Sen dạo phố đón những cơn gió đầu mùa.'),
-(41, 'Áo thun cổ cao snooppy vàng size 9', 2, 1, 'Cái', './img/sanpham/4539_untitled_1.jpg', 100000, 'Với thiết kế tinh tế của áo thun, Boss sẽ nổi bật và ấm áp hơn khi cùng Sen dạo phố đón những cơn gió đầu mùa.'),
-(42, 'Áo thun cổ cao LV đỏ size 6', 2, 1, 'Cái', './img/sanpham/4553_untitled_1.jpg', 70000, 'Với thiết kế tinh tế của áo thun, Boss sẽ nổi bật và ấm áp hơn khi cùng Sen dạo phố đón những cơn gió đầu mùa.'),
-(43, 'Áo trụ thêu chanel xanh size 7', 2, 1, 'Cái', './img/sanpham/4613_z2238924461397_191891a38008316f165b374cac933674.jpg', 60000, 'Với thiết kế tinh tế của áo thun, Boss sẽ nổi bật và ấm áp hơn khi cùng Sen dạo phố đón những cơn gió đầu mùa.'),
-(44, 'Áo thun sát nách trái cam size 5', 2, 1, 'Cái', './img/sanpham/4587_121621255_1311962282475179_4880399607097555200_o.jpg', 50000, 'Với thiết kế tinh tế của áo thun, Boss sẽ nổi bật và ấm áp hơn khi cùng Sen dạo phố đón những cơn gió đầu mùa.');
+(78, 'Thức ăn cho mèo tiêu hóa búi lông ROYAL CANIN Hairball Care', 1, 1, 'Gói', './img/sanpham/thuc-an-cho-meo-tieu-hoa-bui-long-royal-canin-hairball-care-400x400.jpg', 55000, 'Thức ăn cho mèo kiểm soát búi lông ROYAL CANIN Hairball Care dành cho mèo từ 12 tháng tuổi trở lên.'),
+(79, 'Thức ăn cho mèo trưởng thành ROYAL CANIN Fit and Active Adult', 1, 1, 'Gói', './img/sanpham/thuc-an-cho-meo-truong-thanh-royal-canin-fit-and-active-adult-400g-400x400.jpg', 40000, 'Thức ăn cho mèo trưởng thành ROYAL CANIN Fit and Active Adult dành co mèo từ 12 tháng tuổi.'),
+(80, 'Quần áo cho chó mèo AMBABY PET 2JXF192', 2, 1, 'Cái', './img/sanpham/quan-ao-cho-cho-meo-ambaby-pet-2jxf192-400x400.jpg', 165000, 'Quần áo cho chó mèo AMBABY PET 2JXF192 là sản phẩm dành cho cả chó và mèo.'),
+(81, 'Quần áo cho chó mèo AMBABY PET 2JXF248', 2, 1, 'Cái', './img/sanpham/quan-ao-cho-cho-meo-ambaby-pet-2jxf248-400x400.jpg', 200000, 'Quần áo cho chó mèo AMBABY PET 2JXF248 là sản phẩm dành cho cả chó và mèo.'),
+(82, 'Bánh thưởng cho chó vị dâu tây JERHIGH Strawberry Stick', 1, 1, 'Gói', './img/sanpham/banh-thuong-cho-cho-vi-dau-tay-jerhigh-strawberry-stick-400x400.jpg', 65000, 'Bánh thưởng cho chó vị dâu tây JERHIGH Strawberry Stick phù hợp với tất cả các giống chó.'),
+(83, 'Vòng cổ cho chó mèo kèm dây dắt AMBABY PET 1JXS051', 2, 1, 'Cái', './img/sanpham/vong-co-cho-cho-meo-kem-day-dat-ambaby-pet-1jxs051-400x400.jpg', 155000, 'Vòng cổ cho chó mèo kèm dây dắt AMBABY PET 1JXS051 là sản phẩm dùng cho tất cả giống chó và mèo theo từng kích cỡ phù hợp.'),
+(84, 'Quần áo cho chó mèo AMBABY PET 2JXF246', 2, 1, 'Cái', './img/sanpham/quan-ao-cho-cho-meo-ambaby-pet-2jxf246-400x400.jpg', 170000, 'Quần áo cho chó mèo AMBABY PET 2JXF246 là sản phẩm dành cho cả chó và mèo.'),
+(85, 'Thức ăn cho mèo triệt sản ROYAL CANIN Sterilised', 1, 1, 'Gói', './img/sanpham/thuc-an-cho-meo-triet-san-royal-canin-sterilised-400x400.jpg', 47000, 'Thức ăn cho mèo triệt sản ROYAL CANIN Sterilised hỗ trợ các giống mèo đã triệt sản từ 12 tháng tuổi trở lên.'),
+(86, 'Bánh thưởng cho chó vị chuối JERHIGH Banana Stick', 1, 1, 'Gói', './img/sanpham/banh-thuong-cho-cho-vi-chuoi-jerhigh-banana-stick-400x400.jpg', 40000, 'Bánh thưởng cho chó JERHIGH Banana Stick hương vị thơm ngon từ chuối. Phù hợp với tất cả các giống chó.'),
+(87, 'Thức ăn cho mèo Ragdoll trưởng thành ROYAL CANIN Ragdoll Adult', 1, 1, 'Gói', './img/sanpham/thuc-an-cho-meo-ragdoll-truong-thanh-royal-canin-ragdoll-adult-400x400.jpg', 40000, 'Thức ăn cho mèo Ragdoll trưởng thành ROYAL CANIN Ragdoll Adult dành riêng cho giống mèo Ragdoll từ 12 tháng tuổi trở lên.'),
+(88, 'Bánh thưởng cho chó vị thịt gà JERHIGH Chicken Jerky', 1, 1, 'Gói', './img/sanpham/banh-thuong-cho-cho-vi-thit-ga-jerhigh-chicken-jerky-400x400.jpg', 55000, 'Bánh thưởng cho chó vị thịt gà JERHIGH Chicken Jerky phù hợp với tất cả các giống chó.'),
+(89, 'Quần áo cho chó mèo AMBABY PET 2JXF171', 2, 1, 'Cái', './img/sanpham/quan-ao-cho-cho-meo-ambaby-pet-2jxf171-400x400.jpg', 215000, 'Quần áo cho chó mèo AMBABY PET 2JXF171 là sản phẩm dành cho cả chó và mèo.'),
+(90, 'Mũ cho chó mèo AMBABY PET 1JXS013', 2, 1, 'Cái', './img/sanpham/mu-cho-cho-meo-ambaby-pet-1jxs013-400x400.jpg', 175000, 'Mũ cho chó mèo AMBABY PET 1JXS013 là sản phẩm dành cho tất cả giống chó và mèo.'),
+(91, 'Thức ăn cho mèo trưởng thành ROYAL CANIN Indoor Adult', 1, 1, 'Gói', './img/sanpham/thuc-an-cho-meo-truong-thanh-royal-canin-indoor-adult-400x400.jpg', 75000, 'Thức ăn cho mèo trưởng thành ROYAL CANIN Indoor Adult dành riêng cho mèo trưởng thành sống trong nhà từ 12 tháng tuổi trở lên.'),
+(92, 'Xuong cho chó gặm vị thịt bò VEGEBRAND Orgo Beef Small Bone', 1, 1, 'Gói', './img/sanpham/xuong-cho-cho-gam-vi-thit-bo-vegebrand-orgo-beef-small-bone-400x400.jpg', 40000, 'Xuong cho chó gặm vị thịt bò VEGEBRAND Orgo Beef Small Bone là sản phẩm thức ăn dành cho tất cả giống chó.'),
+(93, 'Thức ăn cho mèo dưỡng lông ROYAL CANIN Hair & Skin', 1, 1, 'Gói', './img/sanpham/thuc-an-cho-meo-duong-long-royal-canin-hair-skin-400g-400x400.jpg', 40000, 'Thức ăn cho mèo dưỡng lông ROYAL CANIN Hair & Skin cho tất cả giống mèo từ 12 tháng tuổi trở lên.'),
+(94, 'Thức ăn cho mèo bảo vệ răng miệng ROYAL CANIN Oral Care', 1, 1, 'Gói', './img/sanpham/thuc-an-cho-meo-bao-ve-rang-mieng-royal-canin-oral-care-400x400.jpg', 75000, 'Thức ăn cho mèo ROYAL CANIN Oral Care bảo vệ răng cho các giống mèo từ 12 tháng tuổi trở lên.'),
+(95, 'Thức ăn cho mèo kiểm soát cân nặng ROYAL CANIN Weight Care', 1, 1, 'Gói', './img/sanpham/thuc-an-cho-meo-kiem-soat-can-nang-royal-canin-weight-care-400x400.jpg', 40000, 'Thức ăn cho mèo kiểm soát cân nặng ROYAL CANIN Weight Care cho các giống mèo từ 12 tháng tuổi trở trên.'),
+(96, 'Quần áo cho chó mèo AMBABY PET 2JXF162', 2, 1, 'Cái', './img/sanpham/quan-ao-cho-cho-meo-ambaby-pet-2jxf162-400x400.jpg', 165000, 'Quần áo cho chó mèo AMBABY PET 2JXF162 là sản phẩm dành cho cả chó và mèo.'),
+(97, 'Bánh thưởng cho chó vị rau chân vịt JERHIGH Spinach Stick', 1, 1, 'Gói', './img/sanpham/banh-thuong-cho-cho-vi-rau-chan-vit-jerhigh-spinach-stick-400x400.jpg', 60000, 'Bánh thưởng cho chó vị rau chân vịt JERHIGH Spinach Stick dành cho tất cả các giống chó.'),
+(98, 'Quần áo cho chó mèo AMBABY PET 2JXF108', 2, 1, 'Cái', './img/sanpham/quan-ao-cho-cho-meo-ambaby-pet-2jxf108-400x400.jpg', 165000, 'Quần áo cho chó mèo AMBABY PET 2JXF108 là sản phẩm dành cho cả chó và mèo.'),
+(99, 'Bánh thưởng cho chó vị gan gà JERHIGH Liver Stick', 1, 1, 'Gói', './img/sanpham/banh-thuong-cho-cho-vi-gan-ga-jerhigh-liver-stick-400x400.jpg', 40000, 'Bánh thưởng cho chó vị gan gà JERHIGH Liver Stick phù hợp với tất cả các giống chó.'),
+(100, 'Mũ cho chó mèo AMBABY PET 1JXS018', 2, 1, 'Cái', './img/sanpham/mu-cho-cho-meo-ambaby-1jxs018-400x400.jpg', 90000, 'Mũ cho chó mèo AMBABY PET 1JXS018 là sản phẩm dành cho tất cả giống chó và mèo.'),
+(101, 'Bánh thưởng cho chó vị thịt xông khói JERHIGH Bacon', 1, 1, 'Gói', './img/sanpham/banh-thuong-cho-cho-vi-thit-xong-khoi-jerhigh-bacon-400x400.jpg', 50000, 'Bánh thưởng cho chó vị thịt xông khói JERHIGH Bacon mang lại nguồn năng lượng mới cho tất cả các giống chó.'),
+(102, 'Thức ăn cho mèo trưởng thành ROYAL CANIN Indoor 27', 1, 1, 'Gói', './img/sanpham/thuc-an-cho-meo-truong-thanh-royal-canin-indoor-27-400g-400x400.jpg', 60000, 'Thức ăn cho mèo trưởng thành ROYAL CANIN Indoor 27 dành cho tất cả giống mèo sống trong nhà trên 7 tuổi.'),
+(103, 'Thức ăn cho mèo Ba Tư con ROYAL CANIN Persian Kitten', 1, 1, 'Gói', './img/sanpham/thuc-an-cho-meo-ba-tu-con-royal-canin-persian-kitten-400x400.jpg', 55000, 'Thức ăn cho mèo Ba Tư con ROYAL CANIN Persian Kitten dành riêng cho mèo dưới 12 tháng tuổi.'),
+(104, 'Yếm cho chó mèo kèm dây dắt AMBABY PET 1JXS004', 2, 1, 'Cái', './img/sanpham/yem-cho-cho-meo-kem-day-dat-ambaby-pet-1jxs004-400x400.jpg', 125000, 'Yếm cho chó mèo kèm dây dắt AMBABY PET 1JXS004 là sản phẩm dành cho tất cả giống chó và mèo.'),
+(105, 'Bánh thưởng cho chó vị cà rốt JERHIGH Carrot', 1, 1, 'Gói', './img/sanpham/banh-thuong-cho-cho-vi-ca-rot-jerhigh-carrot-400x400.jpg', 50000, 'Bánh thưởng cho chó JERHIGH Carrot vị cà rốt dành cho tất cả các giống chó.'),
+(106, 'Bánh thưởng cho chó vị bánh quy JERHIGH Cookie', 1, 1, 'Gói', './img/sanpham/banh-thuong-cho-cho-vi-banh-quy-jerhigh-cookie-400x400.jpg', 40000, 'Bánh thưởng cho chó vị bánh quy JERHIGH Cookie mang lại nguồn năng lượng cho tất cả các giống chó.'),
+(107, 'Bánh thưởng cho chó vị sữa JERHIGH Milky Sticks', 1, 1, 'Gói', './img/sanpham/banh-thuong-cho-cho-vi-sua-jerhigh-milky-stick-400x400.jpg', 40000, 'Bánh thưởng cho chó vị sữa JERHIGH Milky Sticks phù hợp với tất cả các giống chó.'),
+(108, 'Bánh thưởng cho chó vị cá JERHIGH Fish Stick', 1, 1, 'Gói', './img/sanpham/banh-thuong-cho-cho-vi-ca-jerhigh-fish-stick-400x400.jpg', 45000, 'Bánh thưởng cho chó vị cá JERHIGH Fish Stick vị cá phù hợp với tất cả các giống chó.'),
+(109, 'Mũ cho chó mèo AMBABY PET 1JXS055', 2, 1, 'Cái', './img/sanpham/mu-cho-cho-meo-ambaby-pet-1jxs055-400x400.jpg', 175000, 'Mũ cho chó mèo AMBABY PET 1JXS055 là sản phẩm dành cho tất cả giống chó và mèo.'),
+(110, 'Mũ cho chó mèo AMBABY PET 1JXS071', 2, 1, 'Cái', './img/sanpham/mu-cho-cho-meo-ambaby-pet-1jxs071-400x400.jpg', 210000, 'Mũ cho chó mèo AMBABY PET 1JXS071 là sản phẩm dành cho tất cả giống chó và mèo.');
 
 -- --------------------------------------------------------
 
@@ -438,7 +425,7 @@ ALTER TABLE `phieunhap`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
