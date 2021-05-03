@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
     $product = executeSingleResult($sql);
     if ($product != null) {
 
-        $tennv = $product['HoTen'];
+        $tennv = $product['HoTen']; 
 
         $gioitinh = $product['GioiTinh'];
 

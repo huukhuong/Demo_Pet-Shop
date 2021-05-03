@@ -1,6 +1,14 @@
+<?php
+session_start();
+//tiến hành kiểm tra là người dùng đã đăng nhập hay chưa
+//nếu chưa, chuyển hướng người dùng ra lại trang đăng nhập
+if (!isset($_SESSION['username-admin'])) {
+	 header('Location: dangnhap.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
 
   <meta charset="utf-8">
@@ -20,6 +28,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body id="page-top">

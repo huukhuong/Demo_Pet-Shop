@@ -32,15 +32,15 @@ require_once('../libs/utility.php');
             <?php
 
 
-            $sql = "select * from phieunhap";
+            $sql = "SELECT ncc.TenNCC, pn.*, nv.HoTen FROM phieunhap AS pn INNER JOIN nhacungcap AS ncc ON pn.MaNCC = ncc.MaNCC INNER JOIN nhanvien AS nv ON pn.MaNV = nv.MaNV";
             $dssanpham = executeResult($sql);
 
             foreach ($dssanpham as $item) {
                 echo '<tr>
 				<td>' . ($item['MaPN']) . '</td>
 				
-				<td>' . $item['MaNCC'] . '</td>
-                <td>' . $item['MaNV'] . '</td>
+				<td>' . $item['TenNCC'] . '</td>
+                <td>' . $item['HoTen'] . '</td>
                 <td>' . $item['NgayNhap'] . '</td>
                 <td>' . $item['TongTien'] . '</td>
                 

@@ -50,16 +50,39 @@ if (!empty($_POST)) {
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
     }
+    if (isset($_POST['tensp'])) {
+        if ($_FILES['uploadFile']['name'] != NULL) {
+            // Kiểm tra file up lên có phải là ảnh không
+            if ($_FILES['uploadFile']['type'] == "image/jpeg" || $_FILES['uploadFile']['type'] == "image/png" || $_FILES['uploadFile']['type'] == "image/gif") {
 
+                // Nếu là ảnh tiến hành code upload
+                $path = "../img/sanpham/"; // Ảnh sẽ lưu vào thư mục images
+                $tmp_name = $_FILES['uploadFile']['tmp_name'];
+                $name = $_FILES['uploadFile']['name'];
+               
+                move_uploaded_file($tmp_name, $path . $name);
+                $image_url = $path . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
+                // Insert ảnh vào cơ sở dữ liệu
+                
+                
+            } else {
+                // Không phải file ảnh
+                echo "Kiểu file không phải là ảnh";
+            }
+        } else {
+            echo "Bạn chưa chọn ảnh upload";
+        }
+    }
     if (!empty($tensp)) {
-
+        $name = "./img/sanpham/" .$name; 
         //Luu vao database
         if ($id == '') {
-            $sql = 'insert into sanpham (TenSP,MaLoai,SoLuong,DonViTinh,HinhAnh,DonGia,MoTaSanPham) values ( "' . $tensp . '", "' . $maloai . '" , "' . $soluong . '","' . $donvitinh . '", "' . $hinhanh . '","' . $dongia . '", "' . $mota . '" )  ';
+            $sql = 'insert into sanpham (TenSP,MaLoai,SoLuong,DonViTinh,HinhAnh,DonGia,MoTaSanPham) values ( "' . $tensp . '", "' . $maloai . '" , "' . $soluong . '","' . $donvitinh . '", "' . $name . '","' . $dongia . '", "' . $mota . '" )  ';
         } else {
-            $sql = 'update sanpham set  TenSP = "' . $tensp . '",MaLoai = "' . $maloai . '",SoLuong = "' . $soluong . '",DonViTinh ="' . $donvitinh . '",HinhAnh ="' . $hinhanh . '",DonGia = "' . $dongia . '" ,MoTaSanPham = "' . $mota . '" where MaSP = "' . $id . '" ';
+            $sql = 'update sanpham set  TenSP = "' . $tensp . '",MaLoai = "' . $maloai . '",SoLuong = "' . $soluong . '",DonViTinh ="' . $donvitinh . '",HinhAnh ="' . $name . '",DonGia = "' . $dongia . '" ,MoTaSanPham = "' . $mota . '" where MaSP = "' . $id . '" ';
         }
-
+        
+       
         execute($sql);
 
         header('Location: ./product.php');
@@ -92,7 +115,7 @@ include('./navbar.php');
     <center>
         <h2>QUẢN LÝ SẢN PHẨM</h2>
     </center>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="temsp">Tên Sản Phẩm:</label>
             <input type="text" name="id" value="<?= $id ?>" hidden="true">
@@ -124,11 +147,8 @@ include('./navbar.php');
 
         <div class="form-group">
             <label for="donvitinh">Đơn vị tính :</label>
-            <select class="form-control" name="donvitinh" id="donvitinh">
-                <option selected>-- Lụa chọn loại sản phẩm --</option>
-                <option>Hộp</option>
-                <option>Cái</option>
-            </select>
+            <input required="true" type="text" class="form-control" id="donvitinh" name="donvitinh" value="<?= $donvitinh ?>">
+
         </div>
         <div class="form-group">
             <label for="dongia">Đơn giá:</label>
@@ -136,8 +156,8 @@ include('./navbar.php');
         </div>
         <div class="form-group">
             <label for="hinhanh">Hình Ảnh:</label>
-            <input required="true" type="text" class="form-control" id="hinhanh" name="hinhanh" value="<?= $hinhanh ?>" onchange="updateThumbnail()">
-            <img src="<?= $hinhanh ?>" style="max-width: 200px" id="img_thumbnail">
+            Chọn file ảnh: <input type="file" name="uploadFile" id="thumbnail" value="<?= $hinhanh?>"  onchange="readURL(this);"><br>
+            <img src=".<?= $hinhanh ?>" style="max-width: 200px" id="blah">
         </div>
         <div class="form-group">
             <label for="mota"> Mô tả sản phẩm:</label>
@@ -148,6 +168,111 @@ include('./navbar.php');
 
 
 </div>
+
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<script>
+	var filterCate = false;
+	var filterName = false;
+	var filterPrice = false;
+	var idCate = 0;
+	var nameFilter = 0;
+	var priceFilter = 0;
+
+	loadData_pagination();
+
+	function loadData_pagination(page) {
+		filterCate = false;
+		filterName = false;
+		filterPrice = false;
+		$.ajax({
+			url: "./service/pagination.php",
+			method: "POST",
+			data: {
+				page: page
+			},
+			success: function(data) {
+				$('#product-pagination').html(data);
+			}
+		});
+	}
+
+	$(document).on('click', '.page-link', function() {
+		let page = $(this).attr("id");
+		if (!filterCate && !filterName)
+			loadData_pagination(page);
+		else if (!filterName)
+			filterCategory(page, idCate);
+		else if (filterName)
+			filterByName(page);
+	});
+
+
+	function filterCategory(page, id) {
+		filterCate = true;
+		idCate = id;
+		$.ajax({
+			url: "./service/filterCategory.php",
+			method: "POST",
+			data: {
+				page: page,
+				id: id
+			},
+			success: function(data) {
+				$('#product-pagination').html(data);
+			}
+		});
+	}
+
+	function filterByName(page) {
+		nameFilter = $('#select-filter-name').find(":selected").val();
+		if (nameFilter == 0) {
+			loadData_pagination(1);
+			return;
+		}
+		$.ajax({
+			url: "./service/filterName.php",
+			method: "POST",
+			data: {
+				page: page,
+				filter: nameFilter
+			},
+			success: function(data) {
+				$('#product-pagination').html(data);
+			}
+		});
+	}
+
+	function filterByPrice(page) {
+		priceFilter = $('#select-filter-price').find(":selected").val();
+		if (priceFilter == 0) {
+			loadData_pagination(1);
+			return;
+		}
+		$.ajax({
+			url: "./service/filterPrice.php",
+			method: "POST",
+			data: {
+				page: page,
+				filter: priceFilter
+			},
+			success: function(data) {
+				$('#product-pagination').html(data);
+			}
+		});
+	}
+</script>
 <?php
 
 include('./footer.php');

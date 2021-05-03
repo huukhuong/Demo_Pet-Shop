@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
         $mancc = $product['MaNCC'];
         $ngaynhap = $product['NgayNhap'];
         $manv = $product['MaNV'];
-
+ 
         $tongtien = $product['TongTien'];
     }
 }
