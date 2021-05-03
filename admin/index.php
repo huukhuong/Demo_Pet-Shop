@@ -9,7 +9,7 @@ if (isset($_POST['loc'])) {
   $ngaybatdautop = $_POST['batdautop'];
   $ketthuctop = $_POST['ketthuctop'];
 }
-?>
+?> 
 
 <div class="container-fluid">
   <center>

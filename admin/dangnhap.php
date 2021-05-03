@@ -8,7 +8,7 @@ session_start();
     <meta charset="utf-8">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+ 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -47,7 +47,7 @@ session_start();
             $query = mysqli_query($con, $sql);
             $num_rows = mysqli_num_rows($query);
             if ($num_rows == 0) {
-                sleep(3);
+                
                 echo '<script>
                 swal({
                 title: "Tên Đăng Nhập Không Đúng",
@@ -67,7 +67,7 @@ session_start();
             </script>';
                
                 //tiến hành lưu tên đăng nhập vào session 
-                $_SESSION['username'] = $username;
+                $_SESSION['username-admin'] = $username;
 
                 sleep(1);
                 header('Location: index.php');

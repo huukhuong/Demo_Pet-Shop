@@ -11,7 +11,7 @@
                <?php echo $_SESSION['username'];  ?>
                </sup></div>
        </a>
-
+ 
        <!-- Divider -->
        <hr class="sidebar-divider my-0">
 

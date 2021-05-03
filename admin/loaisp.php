@@ -10,7 +10,7 @@ require_once('../libs/utility.php');
     <center>
         <h2>QUẢN LÝ LOẠI SẢN PHẨM</h2>
     </center>
-    <a href="./addloai.php">
+     <a href="./addloai.php">
         <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Loại</button>
     </a>
     <table class="table table-bordered table-hover">

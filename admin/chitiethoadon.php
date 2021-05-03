@@ -8,7 +8,7 @@ $tongtien = null;
 $sql = "SELECT * FROM cthoadon where MaHD =" . $rec_id;
 $dscthd = execute($sql);
 ?>
-
+ 
 <table class="table table-bordered table-hover">
     <thead>
         <tr>

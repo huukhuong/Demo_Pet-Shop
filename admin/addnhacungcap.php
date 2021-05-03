@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     if ($product != null) {
 
         $tenncc = $product['TenNCC'];
-
+ 
         $diachi = $product['DiaChi'];
 
         $sdt = $product['DienThoai'];

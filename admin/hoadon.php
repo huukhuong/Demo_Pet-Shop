@@ -9,7 +9,7 @@ include('./navbar.php');
 if (isset($_POST['loc'])) {
     $ngaybatdau = $_POST['batdau'];
     $ketthuc = $_POST['ketthuc'];
-}
+} 
 ?>
 <div class="container-fluid">
     <center>
@@ -29,8 +29,8 @@ if (isset($_POST['loc'])) {
         <thead>
             <tr>
                 <th width="50px">Mã Hoá Đơn </th>
-                <th width="150px">Mã KH</th>
-                <th width="150px">Mã NV</th>
+                <th width="150px">KH</th>
+                <th width="150px">NV</th>
                 <th width="100px">Ngày Lập</th>
                 <th width="100px">Tổng Tiền</th>
                 <th width="100px">Địa Chỉ</th>
@@ -43,10 +43,11 @@ if (isset($_POST['loc'])) {
         //Lay danh sach danh muc tu database
 
         if(!isset($_POST['loc'])){
-            $sql = "select * from hoadon";
+            $sql = "SELECT nv.HoTen AS tennv, hd.*, kh.HoTen FROM hoadon AS hd INNER JOIN nhanvien AS nv ON hd.MaNV = nv.MaNV INNER JOIN khachhang AS kh ON hd.MaKH = kh.id
+            ";
         }
         else{
-            $sql = "select * from hoadon where NgayLap BETWEEN '$ngaybatdau' AND '$ketthuc'";  
+            $sql = "select hoadon.* ,nhanvien.HoTen, khachhang.HoTen from hoadon INNER JOIN nhanvien ON hoadon.MaNV = nhanvien.MaNV INNER JOIN khachhang ON khachhang.id = hoadon.MaKH where NgayLap BETWEEN '$ngaybatdau' AND '$ketthuc'";  
         }
         $dshoadon = executeResult($sql);
         foreach ($dshoadon as $row) {
@@ -58,8 +59,8 @@ if (isset($_POST['loc'])) {
             <tbody>
 
                 <td><?php echo $row['MaHD'];  ?></td>
-                <td><?php echo $row['MaKH'];  ?></td>
-                <td><?php echo $row['MaNV'];  ?></td>
+                <td><?php echo $row['HoTen'];  ?></td>
+                <td><?php echo $row['tennv'];  ?></td>
                 <td><?php echo $row['NgayLap'];  ?></td>
                 <td><?php echo $row['TongTien'];  ?></td>
                 <td><?php echo $row['DiaChiGiaoHang'];  ?></td>

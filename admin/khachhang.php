@@ -81,7 +81,7 @@ include('./navbar.php');
         }
 
         function unlock(id) {
-            var option = confirm('Bạn có muốn mở khoá tài khoản này không  ?')
+            var option = confirm('Bạn có muốn mởp khoá tài khoản này không  ?')
             if (!option) {
                 return;
             }

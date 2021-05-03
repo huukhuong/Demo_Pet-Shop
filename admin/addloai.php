@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
 	$product = executeSingleResult($sql);
 	if ($product != null) {
 		$maloai = $product['MaLoai'];
-		$tenloai = $product['TenLoai'];
+	 	$tenloai = $product['TenLoai'];
 	}
 }
 
