@@ -52,7 +52,7 @@ require_once('../libs/utility.php');
             // $sql2 = 'select * from sanpham where 1 limit ' . $firstIndex . ' , ' . $limit  ;
             // $sql1 ="(SELECT * FROM sanpham WHERE 1 ORDER BY MaSP LIMIT $firstIndex) UNION SELECT * FROM sanpham WHERE 1 ORDER BY MaSP DESC LIMIT $limit ";
            // $sql = "SELECT * FROM sanpham ORDER BY MaSP DESC";  
-           $sql = "SELECT sanpham.* , loai.TenLoai FROM sanpham INNER JOIN loai ON loai.MaLoai = sanpham.MaLoai ORDER BY MASP ASC LIMIT $limit OFFSET $firstIndex";
+           $sql = "SELECT sanpham.* , loai.TenLoai FROM sanpham INNER JOIN loai ON loai.MaLoai = sanpham.MaLoai ORDER BY MASP DESC LIMIT $limit OFFSET $firstIndex";
 
             $categoryList = executeResult($sql);
 

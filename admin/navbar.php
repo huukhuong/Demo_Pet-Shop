@@ -8,7 +8,7 @@
                <i class="fas fa-ad"></i>
            </div>
            <div class="sidebar-brand-text mx-3">
-               <?php echo $_SESSION['username'];  ?>
+           <?php echo $_SESSION['username-admin'];  ?>
                </sup></div>
        </a>
  
@@ -118,7 +118,7 @@
                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">
 
-                               <?php echo $_SESSION['username'];  ?>
+                               <?php echo $_SESSION['username-admin'];  ?>
 
                            </span>
                            <img src="https://bitly.com.vn/s9y1gq" alt="" class="img-profile rounded-circle">
