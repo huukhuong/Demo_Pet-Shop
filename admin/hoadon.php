@@ -9,7 +9,7 @@ include('./navbar.php');
 if (isset($_POST['loc'])) {
     $ngaybatdau = $_POST['batdau'];
     $ketthuc = $_POST['ketthuc'];
-} 
+}
 ?>
 <div class="container-fluid">
     <center>
@@ -20,9 +20,9 @@ if (isset($_POST['loc'])) {
 
         <br>
         <label for="batdau">Ngày Bắt Đầu</label>
-        <input type="date" class="form-control" id="batdau" name="batdau" value="<?=$ngaybatdau?>">
+        <input type="date" class="form-control" id="batdau" name="batdau" value="<?= $ngaybatdau ?>">
         <label for="ketthuc" style="margin: 10px;">Ngày Kết Thúc:</label>
-        <input type="date" class="form-control" name="ketthuc" id="ketthuc" value="<?=$ketthuc?>">
+        <input type="date" class="form-control" name="ketthuc" id="ketthuc" value="<?= $ketthuc ?>">
         <button type="submit" style="margin: 5px;" name="loc" class="btn btn-primary">Lọc</button>
     </form>
     <table class="table table-bordered table-hover">
@@ -42,12 +42,12 @@ if (isset($_POST['loc'])) {
         <?php
         //Lay danh sach danh muc tu database
 
-        if(!isset($_POST['loc'])){
+        if (!isset($_POST['loc'])) {
             $sql = "SELECT nv.HoTen AS tennv, hd.*, kh.HoTen FROM hoadon AS hd INNER JOIN nhanvien AS nv ON hd.MaNV = nv.MaNV INNER JOIN khachhang AS kh ON hd.MaKH = kh.id
             ";
-        }
-        else{
-            $sql = "select hoadon.* ,nhanvien.HoTen, khachhang.HoTen from hoadon INNER JOIN nhanvien ON hoadon.MaNV = nhanvien.MaNV INNER JOIN khachhang ON khachhang.id = hoadon.MaKH where NgayLap BETWEEN '$ngaybatdau' AND '$ketthuc'";  
+        } else {
+            $sql = "SELECT nv.HoTen AS tennv, hd.*, kh.HoTen FROM hoadon AS hd INNER JOIN nhanvien AS nv ON hd.MaNV = nv.MaNV INNER JOIN khachhang AS kh ON hd.MaKH = kh.id
+             where NgayLap BETWEEN '$ngaybatdau' AND '$ketthuc'";
         }
         $dshoadon = executeResult($sql);
         foreach ($dshoadon as $row) {
