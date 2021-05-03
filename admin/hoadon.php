@@ -6,12 +6,25 @@ require_once('../libs/utility.php');
 <?php
 include('./header.php');
 include('./navbar.php');
+if (isset($_POST['loc'])) {
+    $ngaybatdau = $_POST['batdau'];
+    $ketthuc = $_POST['ketthuc'];
+}
 ?>
 <div class="container-fluid">
     <center>
         <h2>QUẢN LÝ HOÁ ĐƠN</h2>
     </center>
+    <h4>Lọc Sản Phẩm </h4>
+    <form class="form-inline" style="margin: 10px;" method="post">
 
+        <br>
+        <label for="batdau">Ngày Bắt Đầu</label>
+        <input type="date" class="form-control" id="batdau" name="batdau" value="<?=$ngaybatdau?>">
+        <label for="ketthuc" style="margin: 10px;">Ngày Kết Thúc:</label>
+        <input type="date" class="form-control" name="ketthuc" id="ketthuc" value="<?=$ketthuc?>">
+        <button type="submit" style="margin: 5px;" name="loc" class="btn btn-primary">Lọc</button>
+    </form>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -29,7 +42,12 @@ include('./navbar.php');
         <?php
         //Lay danh sach danh muc tu database
 
-        $sql = "select * from hoadon";
+        if(!isset($_POST['loc'])){
+            $sql = "select * from hoadon";
+        }
+        else{
+            $sql = "select * from hoadon where NgayLap BETWEEN '$ngaybatdau' AND '$ketthuc'";  
+        }
         $dshoadon = executeResult($sql);
         foreach ($dshoadon as $row) {
             $trangthai = '<td> <button  class="btn btn-danger" onclick="changetrangthai(' . $row['MaHD'] . ')">Đang xử lý</button> </td>';
@@ -76,7 +94,7 @@ include('./navbar.php');
             </div>
         </div>
     </div>
-    
+
 
 
 
@@ -117,29 +135,28 @@ include('./navbar.php');
 </script>
 
 <script>
-        $(document).ready(function() {
-            $(".get_id").click(function() {
-                var ids = $(this).data('id');
-                $.ajax({
-                    url: "chitiethoadon.php",
-                    method: 'post',
-                    data: {
-                        id : ids
-                    },
-                    success: function(data) {
+    $(document).ready(function() {
+        $(".get_id").click(function() {
+            var ids = $(this).data('id');
+            $.ajax({
+                url: "chitiethoadon.php",
+                method: 'post',
+                data: {
+                    id: ids
+                },
+                success: function(data) {
 
-                        $('#load_data').html(data);
+                    $('#load_data').html(data);
 
-                    }
+                }
 
-                });
             });
-
         });
-    
-    </script>
-    
-    
+
+    });
+</script>
+
+
 <?php
 
 include('./footer.php');

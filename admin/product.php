@@ -1,30 +1,38 @@
-
 <?php
-include('./header.php'); 
-include('./navbar.php'); 
+include('./header.php');
+include('./navbar.php');
 ?>
 <?php
 require_once('../libs/dbhelper.php');
 require_once('../libs/utility.php');
 ?>
 <div class="container-fluid">
-<center>
+    <center>
         <h2>QUẢN LÝ SẢN PHẨM</h2>
     </center>
     <a href="./addproduct.php">
         <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Sản Phẩm</button>
     </a>
+    <!-- <form>
+        <select name="sapxep" id="sapxep">
+            <option value="tang">TANG</option>
+            <option value="giam">GIAM</option>
+            
+        </select>
+        <input type="submit" value="submit">
+    </form> -->
+
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th width="50px">Mã </th>
-                <th width="150px">Hình Ảnh</th>
-                <th width="150px">Tên</th>
-                <th width="100px">Loại</th>
-                <th width="150px">Giá</th>
-                <th width="50px">SL</th>
-                <th width="100px">Đơn vị</th>
-                <th width="100px">Mô Tả</th>
+                <th><a class="column_sort" id="ma_sp" data-order="desc" href="#">Mã</a></th>
+                <th style="width : 200px"><a class="column_sort" id="hinhanhsp" data-order="desc" href="#">Hình Ảnh</a></th>
+                <th><a class="column_sort" id="tensp" data-order="desc" href="#">Tên</a></th>
+                <th><a class="column_sort" id="loaisp" data-order="desc" href="#">Loại</a></th>
+                <th><a class="column_sort" id="giasp" data-order="desc" href="#">Giá</a></th>
+                <th><a class="column_sort" id="soluongsp" data-order="desc" href="#">SL</a></th>
+                <th style="width : 100px"><a class="column_sort" id="donvisp" data-order="desc" href="#">Đơn Vị</a></th>
+                <th><a class="column_sort" id="motasp" data-order="desc" href="#">Mô Tả</a></th>
                 <th width="50px"></th>
                 <th width="50px"></th>
             </tr>
@@ -41,7 +49,11 @@ require_once('../libs/utility.php');
                 $page = 1;
             }
             $firstIndex = ($page - 1) * $limit;
-            $sql = 'select * from sanpham where 1 limit ' . $firstIndex . ' , ' . $limit;
+            // $sql2 = 'select * from sanpham where 1 limit ' . $firstIndex . ' , ' . $limit  ;
+            // $sql1 ="(SELECT * FROM sanpham WHERE 1 ORDER BY MaSP LIMIT $firstIndex) UNION SELECT * FROM sanpham WHERE 1 ORDER BY MaSP DESC LIMIT $limit ";
+           // $sql = "SELECT * FROM sanpham ORDER BY MaSP DESC";  
+           $sql = "SELECT * FROM `sanpham` ORDER BY MASP ASC LIMIT $limit OFFSET $firstIndex";
+
             $categoryList = executeResult($sql);
 
             $sql         = 'select count(MaSP) as total from sanpham';
@@ -79,6 +91,7 @@ require_once('../libs/utility.php');
 
         </tbody>
     </table>
+
     <!-- Phân Trang -->
     <ul class="pagination">
         <?php
@@ -120,7 +133,8 @@ require_once('../libs/utility.php');
         })
     }
 </script>
-  <?php
+
+<?php
 
 include('./footer.php');
 ?>

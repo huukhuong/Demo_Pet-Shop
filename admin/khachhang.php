@@ -11,7 +11,7 @@ include('./navbar.php');
     <center>
         <h2>QUẢN LÝ KHÁCH HÀNG</h2>
     </center>
-
+ 
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -81,7 +81,7 @@ include('./navbar.php');
         }
 
         function unlock(id) {
-            var option = confirm('Bạn có muốn  khoá tài khoản này không  ?')
+            var option = confirm('Bạn có muốn mở khoá tài khoản này không  ?')
             if (!option) {
                 return;
             }
@@ -96,7 +96,7 @@ include('./navbar.php');
         }
 
         function lock(id) {
-            var option = confirm('Bạn có muốn mở khoá tài khoản này không  ?')
+            var option = confirm('Bạn có muốn  khoá tài khoản này không  ?')
             if (!option) {
                 return;
             }

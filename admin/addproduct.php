@@ -137,7 +137,7 @@ include('./navbar.php');
         <div class="form-group">
             <label for="hinhanh">Hình Ảnh:</label>
             <input required="true" type="text" class="form-control" id="hinhanh" name="hinhanh" value="<?= $hinhanh ?>" onchange="updateThumbnail()">
-            <img src="<?= $hinhanh ?>" style="max-width: 200px" id="img_thumbnail">
+            <img src=".<?= $hinhanh ?>" style="max-width: 200px" id="img_thumbnail">
         </div>
         <div class="form-group">
             <label for="mota"> Mô tả sản phẩm:</label>

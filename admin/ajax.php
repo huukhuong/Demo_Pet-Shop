@@ -8,7 +8,7 @@ if (!empty($_POST)) {
 		switch ($action) {
 			case 'delete':
 				if (isset($_POST['id'])) {
-					$id = $_POST['id'];
+					$id = $_POST['id']; 
 
 					$sql = 'delete from sanpham where MaSP = ' . $id;
 					execute($sql);
@@ -84,7 +84,7 @@ if (!empty($_POST)) {
 					$id = $_POST['id'];
 					// 0 đang xử lý 
 					// 1 đã xử lý
-					$sql = 'update khachhang set TinhTrang = 0 where id = ' . $id;
+					$sql = 'update khachhang set TinhTrang = 1 where id = ' . $id;
 					execute($sql);
 				}
 				break;
@@ -94,7 +94,7 @@ if (!empty($_POST)) {
 						$id = $_POST['id'];
 						// 0 đang xử lý 
 						// 1 đã xử lý
-						$sql = 'update khachhang set TinhTrang = 1 where id = ' . $id;
+						$sql = 'update khachhang set TinhTrang = 0 where id = ' . $id;
 						execute($sql);
 					}
 					break;
