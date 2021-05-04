@@ -70,7 +70,7 @@ function showProductDetail(maSP) {
 			x = x.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
 			$('#price-total').text(x);
 			$('#quantity').val(1);
-
+			$("#max-quantity").val(data[1]['tonKho']);
 			$('#detailModal').modal('show');
 		}
 	});
@@ -78,8 +78,10 @@ function showProductDetail(maSP) {
 
 
 function themVaoGio() {
-	// if (login) {
-	// window.location.href = "./service/cart-service.php?maSP=" + $('#maSP').val() + "&soLuong=" + $('#quantity').val();
+	if ($('#max-quantity').val() < $('#quantity').val()) {
+		alert("Sản phẩm này không đủ số lượng yêu cầu.\nSố lượng còn trong kho: " + $('#max-quantity').val());
+		return;
+	}
 
 	$.ajax({
 		url: "./service/cart-service.php",
@@ -91,14 +93,11 @@ function themVaoGio() {
 		success: function (res) {
 			if (res == 1)
 				alert("Thêm thành công!");
-			else alert("Bạn phải đăng nhập mới có thể mua hàng!");
+			else
+				alert("Bạn phải đăng nhập mới có thể mua hàng!");
+			$('#detailModal').modal('hide');
 		}
 	});
 
 	return;
-	// }
-	// else {
-	// 	alert("Bạn phải đăng nhập mới có thể mua hàng!");
-	// 	return;
-	// }
 }

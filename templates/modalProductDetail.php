@@ -21,6 +21,7 @@
                         <span id="detail-quantity">
                             <label for="quantity">Số lượng:</label>
                             <input type="number" class="detail-input mx-2" id="quantity" name="quantity" value="1" min="1" max="10">
+                            <input type="number" id="max-quantity" hidden>
                         </span>
                         <div class="detail-price">
                             <h4>Đơn giá:</h4>
@@ -30,7 +31,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal" onclick="themVaoGio();">Thêm vào giỏ hàng</button>
+                <button class="btn"onclick="themVaoGio();">Thêm vào giỏ hàng</button>
             </div>
         </div>
     </div>

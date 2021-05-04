@@ -79,7 +79,7 @@
                                 <input type="number" name="soLuong" value="<?php echo $value['soLuong'] ?>" class="quantity-cart">
                                 <button type="submit" class="btn-warning" style="border-radius: 2px;padding: 4px;">
                                     Cập nhật
-                                    </buton>
+                                </buton>
                             </form>
                         </td>
                         <td>
