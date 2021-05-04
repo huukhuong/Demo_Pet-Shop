@@ -151,9 +151,22 @@ include('./navbar.php');
         </div>
 
         <div class="form-group">
-            <label for="donvitinh">Đơn vị tính :</label>
-            <input required="true" type="text" class="form-control" id="donvitinh" name="donvitinh" value="<?= $donvitinh ?>">
+            <label for="donvitinh">Đơn Vị sản phẩm:</label>
+            <select class="form-control" name="donvitinh" id="donvitinh">
+                <option>-- Lụa chọn Đơn Vị Sản Phẩm --</option>
+                <?php
+                $sql   = 'select * from donvi';
+                $dsloai = executeResult($sql);
 
+                foreach ($dsloai as $item) {
+                    if ($item['MaDV'] == $donvitinh) {
+                        echo '<option selected value="' . $item['MaDV'] . '">' . $item['TenDV'] . '</option>';
+                    } else {
+                        echo '<option value="' . $item['MaDV'] . '">' . $item['TenDV'] . '</option>';
+                    }
+                }
+                ?>
+            </select>
         </div>
         <div class="form-group">
             <label for="dongia">Đơn giá:</label>

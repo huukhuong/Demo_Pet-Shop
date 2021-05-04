@@ -14,7 +14,7 @@ if ($page <= 0) {
 }
 
 $firstIndex = ($page - 1) * $limit;
-$sql = "SELECT sanpham.* , loai.TenLoai FROM sanpham INNER JOIN loai ON loai.MaLoai = sanpham.MaLoai ORDER BY $column $type LIMIT $limit OFFSET $firstIndex";
+$sql = "SELECT sanpham.* , loai.TenLoai, donvi.TenDV FROM sanpham INNER JOIN donvi ON sanpham.DonViTinh = donvi.MaDV INNER JOIN loai ON loai.MaLoai = sanpham.MaLoai ORDER BY $column $type LIMIT $limit OFFSET $firstIndex";
 
 $categoryList = executeResult($sql);
 
@@ -78,7 +78,7 @@ $index = 1;
                 <td>' . $item['TenLoai'] . '</td>
                 <td>' . number_format($item['DonGia']) . '</td>
                 <td>' . number_format($item['SoLuong']) . '</td>
-                <td>' . $item['DonViTinh'] . '</td>
+                <td>'.$item['DonViTinh'].'-' . $item['TenDV'] . '</td>
                 <td>' . $item['MoTaSanPham'] . '</td>
                 <td>
                     <a href="addproduct.php?id=' . $item['MaSP'] . '"><button class="btn btn-warning">Sửa</button></a>
