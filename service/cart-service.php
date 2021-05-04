@@ -3,7 +3,7 @@
 include("./config.php");
 session_start();
 
-if(!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username'])) {
     echo 0;
     die();
 }
@@ -30,7 +30,6 @@ if (isset($_GET['maSP'])) {
 
         if ($action == 'add') {
             if (isset($_SESSION['cart'][$maSP])) {
-                // CẬP NHẬT GIỎ HÀNG
                 $_SESSION['cart'][$maSP]['soLuong'] += $soLuong;
             } else {
                 // THÊM MỚI VÀO GIỎ HÀNG
@@ -41,6 +40,14 @@ if (isset($_GET['maSP'])) {
         }
 
         if ($action == 'update') {
+            if ($_SESSION['cart'][$maSP]['soLuong'] + $soLuong > $item['soLuong']) {
+                echo "
+                <script>
+                    alert('Số lượng còn lại không đủ cho yêu cầu của bạn!');
+                    window.location.href = '../cart.php';
+                </script>";
+                die();
+            }
             $_SESSION['cart'][$maSP]['soLuong'] = $soLuong;
             header("Location: ../cart.php");
             die();
