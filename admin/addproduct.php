@@ -74,7 +74,12 @@ if (!empty($_POST)) {
         }
     }
     if (!empty($tensp)) {
-        $name = "./img/sanpham/" .$name; 
+        if($name !=''){
+            $name = "./img/sanpham/" .$name; 
+        }
+        else{
+            $name = $hinhanh ;
+        }
         //Luu vao database
         if ($id == '') {
             $sql = 'insert into sanpham (TenSP,MaLoai,SoLuong,DonViTinh,HinhAnh,DonGia,MoTaSanPham) values ( "' . $tensp . '", "' . $maloai . '" , "' . $soluong . '","' . $donvitinh . '", "' . $name . '","' . $dongia . '", "' . $mota . '" )  ';
@@ -182,97 +187,7 @@ include('./navbar.php');
         }
     }
 </script>
-<script>
-	var filterCate = false;
-	var filterName = false;
-	var filterPrice = false;
-	var idCate = 0;
-	var nameFilter = 0;
-	var priceFilter = 0;
 
-	loadData_pagination();
-
-	function loadData_pagination(page) {
-		filterCate = false;
-		filterName = false;
-		filterPrice = false;
-		$.ajax({
-			url: "./service/pagination.php",
-			method: "POST",
-			data: {
-				page: page
-			},
-			success: function(data) {
-				$('#product-pagination').html(data);
-			}
-		});
-	}
-
-	$(document).on('click', '.page-link', function() {
-		let page = $(this).attr("id");
-		if (!filterCate && !filterName)
-			loadData_pagination(page);
-		else if (!filterName)
-			filterCategory(page, idCate);
-		else if (filterName)
-			filterByName(page);
-	});
-
-
-	function filterCategory(page, id) {
-		filterCate = true;
-		idCate = id;
-		$.ajax({
-			url: "./service/filterCategory.php",
-			method: "POST",
-			data: {
-				page: page,
-				id: id
-			},
-			success: function(data) {
-				$('#product-pagination').html(data);
-			}
-		});
-	}
-
-	function filterByName(page) {
-		nameFilter = $('#select-filter-name').find(":selected").val();
-		if (nameFilter == 0) {
-			loadData_pagination(1);
-			return;
-		}
-		$.ajax({
-			url: "./service/filterName.php",
-			method: "POST",
-			data: {
-				page: page,
-				filter: nameFilter
-			},
-			success: function(data) {
-				$('#product-pagination').html(data);
-			}
-		});
-	}
-
-	function filterByPrice(page) {
-		priceFilter = $('#select-filter-price').find(":selected").val();
-		if (priceFilter == 0) {
-			loadData_pagination(1);
-			return;
-		}
-		$.ajax({
-			url: "./service/filterPrice.php",
-			method: "POST",
-			data: {
-				page: page,
-				filter: priceFilter
-			},
-			success: function(data) {
-				$('#product-pagination').html(data);
-			}
-		});
-	}
-</script>
 <?php
 
 include('./footer.php');
