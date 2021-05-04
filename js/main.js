@@ -94,7 +94,7 @@ function themVaoGio() {
 			if (res == 1)
 				alert("Thêm thành công!");
 			else
-				alert("Bạn phải đăng nhập mới có thể mua hàng!");
+				alert("Sản phẩm này không đủ số lượng yêu cầu.\nSố lượng còn trong kho: " + ($('#max-quantity').val() - 1));
 			$('#detailModal').modal('hide');
 		}
 	});

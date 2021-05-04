@@ -3,17 +3,16 @@
 include("./config.php");
 session_start();
 
-if (!isset($_SESSION['username'])) {
-    echo 0;
-    die();
-}
-
 if (isset($_GET['maSP'])) {
 
     $maSP = $_GET['maSP'];
 
     $soLuong =  (isset($_GET['soLuong'])) ? $_GET['soLuong'] : 1;
     $action = (isset($_GET['action'])) ? $_GET['action'] : 'add';
+
+    if (isset($_SESSION['cart'][$maSP]) && $action != 'delete') {
+        $action = 'update';
+    }
 
     $sql = "SELECT * FROM SanPham WHERE MaSP=$maSP";
     $result = mysqli_query($conn, $sql);

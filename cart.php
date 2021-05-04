@@ -79,7 +79,7 @@
                                 <input type="number" name="soLuong" value="<?php echo $value['soLuong'] ?>" class="quantity-cart">
                                 <button type="submit" class="btn-warning" style="border-radius: 2px;padding: 4px;">
                                     Cập nhật
-                                </buton>
+                                    </buton>
                             </form>
                         </td>
                         <td>
@@ -108,7 +108,7 @@
                         <td>
                         </td>
                         <td>
-                            <a href="./checkout.php" class="btn">Thanh toán ngay</a>
+                            <a href="javascript: checkDangNhap();" class="btn">Thanh toán ngay</a>
                         </td>
                     </tr>
                 </table>
@@ -122,6 +122,19 @@
     <?php
     include("./templates/footer.php");
     ?>
+
+
+    <script>
+        function checkDangNhap() {
+            let flag = <?php echo isset($_SESSION['username']) ? 1 : 0; ?>;
+
+            if (flag == 0) {
+                alert("Bạn phải đăng nhập mới có thể mua hàng!");
+            } else {
+                window.location.href = "./checkout.php";
+            }
+        }
+    </script>
 
 </body>
 
