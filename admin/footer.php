@@ -23,7 +23,7 @@
     <div class="container my-auto"  style="position: absolute ; bottom : 0 ;width :100% ;background: #ffffff; 
 border-top: 1px solid #fff; " >
         <div class="copyright text-center my-auto">
-            <h3><span>2 THẰNG - 2 NGÀY</span></h3>
+            <h3><span>3KS-SHOP</span></h3>
         </div>
     </div>
 </footer>
