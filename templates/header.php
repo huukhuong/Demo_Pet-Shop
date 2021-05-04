@@ -72,11 +72,9 @@ if (!isset($_SESSION))
     </div>
 
 
-    <div id="search-box">
-        <form action="" method="get" id="form-header-search">
-            <input type="text" id="search-inp" placeholder="Tìm kiếm...">
-        </form>
-    </div>
+    <?php
+    include("./templates/search-bar.php");
+    ?>
 </nav>
 <!-- END NAVBAR -->
 
