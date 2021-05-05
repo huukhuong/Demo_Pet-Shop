@@ -24,9 +24,8 @@ if (!empty($_POST)) {
 					$getmasp = 'SELECT MaSP,SoLuong FROM cthoadon where MaHD =' . $id;
 					$dssanpham = executeResult($getmasp);
 					foreach ($dssanpham as $item) {
-						$getsoluong = 'select SoLuong from sanpham where MaSP =' . $item['MaSP'];
-						$soluong = executeResult($getsoluong);
-						$update = 'update sanpham set SoLuong  = (' . $soluong['SoLuong'] + $item['SoLuong'] . ') where MaSP = ' . $item['MaSP'];
+					//	$getsoluong = 'select SoLuong from sanpham where MaSP =' . $item['MaSP'];
+						$update = 'update sanpham set SoLuong  = (Soluong-' . $item['SoLuong'] . ') where MaSP = ' . $item['MaSP'];
 						execute($update);
 					}
 					// bị bug không hiểu sao k set tăng giảm số lượng sản phẩm được
@@ -39,7 +38,16 @@ if (!empty($_POST)) {
 					// 0 đang xử lý 
 					// 1 đã xử lý
 					$sql = 'update hoadon set TrangThai = 0 where MaHD = ' . $id;
+
 					execute($sql);
+					$getmasp = 'SELECT MaSP,SoLuong FROM cthoadon where MaHD =' . $id;
+					$dssanpham = executeResult($getmasp);
+					foreach ($dssanpham as $item) {
+					//	$getsoluong = 'select SoLuong from sanpham where MaSP =' . $item['MaSP'];
+						$update = 'update sanpham set SoLuong  = (Soluong +' . $item['SoLuong'] . ') where MaSP = ' . $item['MaSP'];
+						execute($update);
+					}
+
 				}
 				break;
 
