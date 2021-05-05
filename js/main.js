@@ -21,10 +21,6 @@ $(document).ready(function () {
 		}
 	})
 
-	$("#search-btn").click(function () {
-		$("#search-box").toggleClass("active");
-	});
-
 	$(window).scroll(function () {
 		var Scroll = $(window).scrollTop();
 

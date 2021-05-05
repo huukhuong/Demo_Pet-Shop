@@ -34,7 +34,7 @@ if (!isset($_SESSION))
 
 			<ul class="navbar-nav ml-auto mt-2 mt-lg-0 d-flex">
 				<li class="nav-item">
-					<a class="nav-link nav-icon" id="search-btn" href="#search">
+					<a class="nav-link nav-icon" id="search-btn" href="./search-page.php">
 						<i class="fas fa-search"></i></a>
 				</li>
 
@@ -76,13 +76,7 @@ if (!isset($_SESSION))
 			</ul>
 		</div>
 	</div>
-
-
-	<div id="search-box">
-		<form action="" method="get" id="form-header-search">
-			<input type="text" id="search-inp" placeholder="Tìm kiếm...">
-		</form>
-	</div>
+	
 </nav>
 <!-- END NAVBAR -->
 

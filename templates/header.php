@@ -28,7 +28,7 @@ if (!isset($_SESSION))
 
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0 d-flex">
                 <li class="nav-item">
-                    <a class="nav-link nav-icon" id="search-btn" href="#search">
+                    <a class="nav-link nav-icon" id="search-btn" href="./search-page.php">
                         <i class="fas fa-search"></i></a>
                 </li>
 
@@ -71,10 +71,6 @@ if (!isset($_SESSION))
         </div>
     </div>
 
-
-    <?php
-    include("./templates/search-bar.php");
-    ?>
 </nav>
 <!-- END NAVBAR -->
 
