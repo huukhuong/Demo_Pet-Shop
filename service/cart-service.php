@@ -47,6 +47,13 @@ if (isset($_GET['maSP'])) {
             die();
         }
 
+        $item = [
+            'maSP' => $product['MaSP'],
+            'tenSP' => $product['TenSP'],
+            'hinhAnh' => $product['HinhAnh'],
+            'donGia' => $product['DonGia'],
+            'soLuong' => $product['SoLuong']
+        ];
 
 
         if ($action == 'update') {
