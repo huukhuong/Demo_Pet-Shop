@@ -22,15 +22,7 @@ if (isset($_POST['loc'])) {
       <h6 style="color: red;">TOP 5 SẢN PHẨM BÁN CHẠY NHẤT</h6>
     </center>
     <br>
-    <form class="form-inline" style="margin: 10px;" method="post">
-
-      <br>
-      <label for="batdau">Ngày Bắt Đầu: </label>
-      <input type="date" style="margin: 5px;" class="form-control" id="batdautop" name="batdautop" value="<?= $ngaybatdau ?>">
-      <label for="ketthuc" style="margin: 10px;">Ngày Kết Thúc:</label>
-      <input type="date" class="form-control" name="ketthuctop" id="ketthuctop" value="<?= $ketthuc ?>">
-      <button type="submit" style="margin: 5px;" name="loc" class="btn btn-primary">Lọc</button>
-    </form>
+    
     <table class="table table-striped">
       <thead>
         <tr>

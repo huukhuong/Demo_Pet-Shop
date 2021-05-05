@@ -30,6 +30,7 @@ session_start();
         $username = addslashes($username);
         $password = strip_tags($password);
         $password = addslashes($password);
+        
         if ($username == "" || $password == "") {
             echo "username hoặc password bạn không được để trống!";
         } else {
