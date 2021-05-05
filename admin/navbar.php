@@ -66,6 +66,11 @@
                <i class="fas fa-fw fa-tachometer-alt"></i>
                <span>Quản Lý Nhà Cung Cấp</span></a>
        </li>
+       <li class="nav-item ">
+           <a class="nav-link" href="./donvi.php">
+               <i class="fas fa-fw fa-tachometer-alt"></i>
+               <span>Quản Lý Đơn Vị</span></a>
+       </li>
        <!--Nav-->
 
 
