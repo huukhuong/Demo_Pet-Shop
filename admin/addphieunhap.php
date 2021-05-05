@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
         $ngaynhap = $product['NgayNhap'];
         $manv = $product['MaNV'];
  
-       
+            
     }
 }
 
