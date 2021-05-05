@@ -12,7 +12,7 @@
                 <div class="modal-body mt-3">
 
                     <div class="alert alert-success message_login" role="alert" id="message_success">
-                        Đăng nhập thành công! Quay về <a href="./index.php">Trang chủ</a> sau <span id="count_sec">5</span> giây.
+                        Đăng nhập thành công! Tự động đăng nhập sau <span id="count_sec">5</span> giây.
                     </div>
 
                     <div class="alert alert-danger message_login" role="alert" id="message_err">
@@ -85,7 +85,7 @@
                 count_sec.html(sec);
                 sec--;
                 if (sec < 0) {
-                    window.location.href = './index.php';
+                    location.reload();
                 }
             }, 1000);
         }

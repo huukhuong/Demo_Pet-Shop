@@ -44,7 +44,7 @@ $(document).ready(function () {
             seconds.html(i);
             i--;
             if (i < 0) {
-                window.location.href = './index.php';
+                location.reload();
             }
         }, 1000);
     }

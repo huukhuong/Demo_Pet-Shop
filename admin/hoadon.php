@@ -59,8 +59,8 @@ if (isset($_POST['loc'])) {
             <tbody>
 
                 <td><?php echo $row['MaHD'];  ?></td>
-                <td><?php echo $row['HoTen'];  ?></td>
-                <td><?php echo $row['tennv'];  ?></td>
+                <td><?php echo $row['MaKH'] ."-". $row['HoTen'];  ?></td>
+                <td><?php echo $row['MaNV'] ."-". $row['tennv'];  ?></td>
                 <td><?php echo $row['NgayLap'];  ?></td>
                 <td><?php echo $row['TongTien'];  ?></td>
                 <td><?php echo $row['DiaChiGiaoHang'];  ?></td>

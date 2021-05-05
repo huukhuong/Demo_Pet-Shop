@@ -68,7 +68,7 @@
 
 <body>
     <?php
-    include("./templates/header-index.php");
+    include("./templates/header.php");
 
     ?>
 

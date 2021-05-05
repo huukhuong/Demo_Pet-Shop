@@ -59,12 +59,12 @@ if (!empty($_POST)) {
                 $path = "../img/sanpham/"; // Ảnh sẽ lưu vào thư mục images
                 $tmp_name = $_FILES['uploadFile']['tmp_name'];
                 $name = $_FILES['uploadFile']['name'];
-               
+
                 move_uploaded_file($tmp_name, $path . $name);
                 $image_url = $path . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
                 // Insert ảnh vào cơ sở dữ liệu
-                
-                
+
+
             } else {
                 // Không phải file ảnh
                 echo "Kiểu file không phải là ảnh";
@@ -74,11 +74,10 @@ if (!empty($_POST)) {
         }
     }
     if (!empty($tensp)) {
-        if($name !=''){
-            $name = "./img/sanpham/" .$name; 
-        }
-        else{
-            $name = $hinhanh ;
+        if ($name != '') {
+            $name = "./img/sanpham/" . $name;
+        } else {
+            $name = $hinhanh;
         }
         //Luu vao database
         if ($id == '') {
@@ -86,8 +85,8 @@ if (!empty($_POST)) {
         } else {
             $sql = 'update sanpham set  TenSP = "' . $tensp . '",MaLoai = "' . $maloai . '",SoLuong = "' . $soluong . '",DonViTinh ="' . $donvitinh . '",HinhAnh ="' . $name . '",DonGia = "' . $dongia . '" ,MoTaSanPham = "' . $mota . '" where MaSP = "' . $id . '" ';
         }
-        
-       
+
+
         execute($sql);
 
         header('Location: ./product.php');
@@ -129,16 +128,16 @@ include('./navbar.php');
         <div class="form-group">
             <label for="loai">Loại sản phẩm:</label>
             <select class="form-control" name="maloai" id="maloai">
-                <option>-- Lụa chọn loại sản phẩm --</option>
+                <option value="0">-- Lựa chọn loại sản phẩm --</option>
                 <?php
                 $sql   = 'select * from loai';
                 $dsloai = executeResult($sql);
 
                 foreach ($dsloai as $item) {
                     if ($item['MaLoai'] == $maloai) {
-                        echo '<option selected value="' . $item['MaLoai'] . '">' . $item['TenLoai'] . '</option>';
+                        echo '<option selected id="' . $item['MaLoai'] . '" value="' . $item['MaLoai'] . '">' . $item['TenLoai'] . '</option>';
                     } else {
-                        echo '<option value="' . $item['MaLoai'] . '">' . $item['TenLoai'] . '</option>';
+                        echo '<option id="' . $item['MaLoai'] . '" value="' . $item['MaLoai'] . '">' . $item['TenLoai'] . '</option>';
                     }
                 }
                 ?>
@@ -153,7 +152,7 @@ include('./navbar.php');
         <div class="form-group">
             <label for="donvitinh">Đơn Vị sản phẩm:</label>
             <select class="form-control" name="donvitinh" id="donvitinh">
-                <option>-- Lụa chọn Đơn Vị Sản Phẩm --</option>
+                <option>-- Lựa chọn Đơn Vị Sản Phẩm --</option>
                 <?php
                 $sql   = 'select * from donvi';
                 $dsloai = executeResult($sql);
@@ -174,25 +173,31 @@ include('./navbar.php');
         </div>
         <div class="form-group">
             <label for="hinhanh">Hình Ảnh:</label>
-            Chọn file ảnh: <input type="file" name="uploadFile" id="thumbnail" value="<?= $hinhanh?>"  onchange="readURL(this);"><br>
+            Chọn file ảnh: <input type="file" name="uploadFile" id="thumbnail" value="<?= $hinhanh ?>" onchange="readURL(this);"><br>
             <img src=".<?= $hinhanh ?>" style="max-width: 200px" id="blah">
         </div>
         <div class="form-group">
             <label for="mota"> Mô tả sản phẩm:</label>
             <textarea class="form-control" rows="5" name="mota" id="mota"><?= $mota ?></textarea>
         </div>
-        <button class="btn btn-success">Lưu</button>
+        <button class="btn btn-success" id="btn-save">Lưu</button>
     </form>
 
 
 </div>
 
 <script type="text/javascript">
+    $('#btn-save').click(function() {
+        $('#soluong').val() > 100000 ? alert('Số lượng quá lớn :))') : "";
+        $('#dongia').val() > 100000000 ? alert('Đơn giá quá lớn :))') : "";
+        $('#maloai').val() == 0 ? alert('Hãy chọn loại SP') : '';
+    });
+
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 $('#blah').attr('src', e.target.result);
             }
 
