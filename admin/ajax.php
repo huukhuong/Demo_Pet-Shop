@@ -17,19 +17,31 @@ if (!empty($_POST)) {
 			case 'change': // xử lý hoá donw => đã xử lý
 				if (isset($_POST['MaHD'])) {
 					$id = $_POST['MaHD'];
-
-					// 1 đã xử lý
-					$sql = 'update hoadon set TrangThai = 1 where MaHD = ' . $id;
-					execute($sql);
+					
 					$getmasp = 'SELECT MaSP,SoLuong FROM cthoadon where MaHD =' . $id;
 					$dssanpham = executeResult($getmasp);
 					foreach ($dssanpham as $item) {
-					//	$getsoluong = 'select SoLuong from sanpham where MaSP =' . $item['MaSP'];
-						$update = 'update sanpham set SoLuong  = (Soluong-' . $item['SoLuong'] . ') where MaSP = ' . $item['MaSP'];
+						$getsoluong = 'select SoLuong from sanpham where MaSP =' . $item['MaSP'];
+						
+						$con = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+						$conLai = 0;
+						$result = mysqli_query($con, $getsoluong);
+						while($row = mysqli_fetch_array($result)) {
+							$conLai = $row['SoLuong'];
+						}
+
+						if ($conLai < $item['SoLuong']) {
+							echo 'Sản phẩm đã hết hàng!';
+							die();
+						}
+
+						$update = 'update sanpham set SoLuong  = (Soluong-' . $item['SoLuong'] . ') where MaSP = ' . $item['MaSP'] . ' AND ((Soluong-' . $item['SoLuong'] . ') >= 0)';
 						execute($update);
 					}
-					// bị bug không hiểu sao k set tăng giảm số lượng sản phẩm được
-
+					// 1 đã xử lý
+					$sql = 'update hoadon set TrangThai = 1 where MaHD = ' . $id;
+					execute($sql);
+					echo 'Xử lý thành công';
 				}
 				break;
 			case 'change2': // xử lý hoá donw => đang xử lý
@@ -37,17 +49,16 @@ if (!empty($_POST)) {
 					$id = $_POST['MaHD'];
 					// 0 đang xử lý 
 					// 1 đã xử lý
-					$sql = 'update hoadon set TrangThai = 0 where MaHD = ' . $id;
-
-					execute($sql);
 					$getmasp = 'SELECT MaSP,SoLuong FROM cthoadon where MaHD =' . $id;
 					$dssanpham = executeResult($getmasp);
 					foreach ($dssanpham as $item) {
-					//	$getsoluong = 'select SoLuong from sanpham where MaSP =' . $item['MaSP'];
+						//	$getsoluong = 'select SoLuong from sanpham where MaSP =' . $item['MaSP'];
 						$update = 'update sanpham set SoLuong  = (Soluong +' . $item['SoLuong'] . ') where MaSP = ' . $item['MaSP'];
 						execute($update);
 					}
-
+					$sql = 'update hoadon set TrangThai = 0 where MaHD = ' . $id;
+					execute($sql);
+					echo 'Xử lý thành công';
 				}
 				break;
 

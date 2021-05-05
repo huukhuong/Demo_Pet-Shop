@@ -59,19 +59,18 @@ if (isset($_POST['loc'])) {
             <tbody>
 
                 <td><?php echo $row['MaHD'];  ?></td>
-                <td><?php echo $row['MaKH'] ."-". $row['HoTen'];  ?></td>
-                <td><?php echo $row['MaNV'] ."-". $row['tennv'];  ?></td>
+                <td><?php echo $row['MaKH'] . "-" . $row['HoTen'];  ?></td>
+                <td><?php echo $row['MaNV'] . "-" . $row['tennv'];  ?></td>
                 <td><?php echo $row['NgayLap'];  ?></td>
                 <td><?php echo $row['TongTien'];  ?></td>
                 <td><?php echo $row['DiaChiGiaoHang'];  ?></td>
 
                 <?php echo $trangthai; ?>
-                <td><a href="#" class="btn btn-success get_id" data-id='<?php echo $row["MaHD"] ?>' data-toggle="modal" data-target="#myModal">Chi
-                        Tiết</a></td>
-
-
-
-
+                <td>
+                    <a href="#" class="btn btn-success get_id" data-id='<?php echo $row["MaHD"] ?>' data-toggle="modal" data-target="#myModal">
+                        Chi Tiết
+                    </a>
+                </td>
             </tbody>
         <?php
         }
@@ -111,12 +110,19 @@ if (isset($_POST['loc'])) {
         }
 
         console.log(id)
-        $.post('ajax.php', {
-            'MaHD': id,
-            'action': 'change'
-        }, function(data) {
-            location.reload()
-        })
+        
+        $.ajax({
+            url: './ajax.php',
+            method: 'POST',
+            data: {
+                MaHD: id,
+                action: 'change'
+            },
+            success: function(data) {
+                alert(data);
+                location.reload();
+            }
+        });
     }
 
     function changetrangthai2(id) {
@@ -125,13 +131,18 @@ if (isset($_POST['loc'])) {
             return;
         }
 
-        console.log(id)
-        $.post('ajax.php', {
-            'MaHD': id,
-            'action': 'change2'
-        }, function(data) {
-            location.reload()
-        })
+        $.ajax({
+            url: './ajax.php',
+            method: 'post',
+            data: {
+                MaHD: id,
+                action: 'change2'
+            },
+            success: function(data) {
+                alert(data);
+                location.reload();
+            }
+        });
     }
 </script>
 
