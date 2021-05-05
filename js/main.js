@@ -74,11 +74,7 @@ function showProductDetail(maSP) {
 
 
 function themVaoGio() {
-	if ($('#max-quantity').val() < $('#quantity').val()) {
-		alert("Sản phẩm này không đủ số lượng yêu cầu.\nSố lượng còn trong kho: " + $('#max-quantity').val());
-		return;
-	}
-
+	
 	$.ajax({
 		url: "./service/cart-service.php",
 		method: "GET",
@@ -88,9 +84,9 @@ function themVaoGio() {
 		},
 		success: function (res) {
 			if (res == 1)
-				alert("Thêm thành công!");
+				alert(res);
 			else
-				alert("Sản phẩm này không đủ số lượng yêu cầu.\nSố lượng còn trong kho: " + ($('#max-quantity').val() - 1));
+				alert(res);
 			$('#detailModal').modal('hide');
 		}
 	});
