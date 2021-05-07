@@ -54,7 +54,14 @@ $output .= '</div>';
 //============================================
 //============================================
 // tạo n nút phân trang
-$output .= '
+$page_query = "SELECT * FROM SanPham WHERE MaLoai=$id";
+$page_result = mysqli_query($conn, $page_query);
+$total_record = mysqli_num_rows($page_result);
+$total_pages = ceil($total_record / $record_per_page);
+$page > $total_pages ? $page = 1 : $page = $page;
+
+if($total_pages > 1)  {
+    $output .= '
     <nav aria-label="Page navigation example">
         <ul class="pagination" style="justify-content: center;">
             <li class="page-item mx-1">
@@ -64,30 +71,22 @@ $output .= '
                 </a>
             </li>
     ';
-
-$page_query = "SELECT * FROM SanPham WHERE MaLoai=$id";
-$page_result = mysqli_query($conn, $page_query);
-$total_record = mysqli_num_rows($page_result);
-$total_pages = ceil($total_record / $record_per_page);
-$page > $total_pages ? $page = 1 : $page = $page;
-
-for ($i = 1; $i <= $total_pages; $i++) {
-    if ($i == $page)
-        $output .= "<li class='page-item mx-1 active'><a class='page-link' id='$i'>$i</a></li>";
-    else
-        $output .= "<li class='page-item mx-1'><a class='page-link' id='$i'>$i</a></li>";
+    for ($i = 1; $i <= $total_pages; $i++) {
+        if ($i == $page)
+            $output .= "<li class='page-item mx-1 active'><a class='page-link' id='$i'>$i</a></li>";
+        else
+            $output .= "<li class='page-item mx-1'><a class='page-link' id='$i'>$i</a></li>";
+    }
+    
+    $output .= '
+                <li class="page-item mx-1">
+                    <a class="page-link" id="' . $total_pages . '" aria-label="Last">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Last</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    ';
 }
-
-$output .= '
-            <li class="page-item mx-1">
-                <a class="page-link" id="' . $total_pages . '" aria-label="Last">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Last</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-';
-
-
 echo $output;
