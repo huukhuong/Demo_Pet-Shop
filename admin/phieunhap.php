@@ -21,7 +21,8 @@ require_once('../libs/utility.php');
                 <th width="150px">Mã NV</th>
                 <th width="150px">Ngày Nhập</th>
 
-                <th width="150px">Tổng Tiền</th>
+               
+                <th width="50px"></th>
                 <th width="50px"></th>
                 <th width="50px"></th>
                 <th width="50px"></th>
@@ -42,7 +43,7 @@ require_once('../libs/utility.php');
 				<td>' . $item['TenNCC'] . '</td>
                 <td>' . $item['HoTen'] . '</td>
                 <td>' . $item['NgayNhap'] . '</td>
-                <td>' . $item['TongTien'] . '</td>
+                
                 
 				
 				<td>
@@ -53,8 +54,11 @@ require_once('../libs/utility.php');
 				</td>
 
                 <td>
-					<button class="btn btn-success get_id"  data-id= ' . $item['MaPN'] . ' onclick="deleteProduct1(' . $item['MaPN'] . ')" data-toggle="modal" data-target="#myModal">Chi Tiết</button>
+					<button class="btn btn-success get_id"  data-id= ' . $item['MaPN'] . ' onclick="deleteProduct1(' . $item['MaPN'] . ')" data-toggle="modal" data-target="#myModal">CT</button>
 				</td>
+                <td>
+                <a href="addctphieunhap.php?id=' . $item['MaPN'] . '"><button class="btn btn-warning">Thêm</button></a>
+            </td>
                
 			</tr>';
             }

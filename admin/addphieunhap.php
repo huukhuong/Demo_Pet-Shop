@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
         $ngaynhap = $product['NgayNhap'];
         $manv = $product['MaNV'];
  
-        $tongtien = $product['TongTien'];
+            
     }
 }
 
@@ -34,10 +34,7 @@ if (!empty($_POST)) {
         $manv = str_replace('"', '\\"', $manv);
     }
 
-    if (isset($_POST['tongtien'])) {
-        $tongtien = $_POST['tongtien'];
-        $tongtien = str_replace('"', '\\"', $tongtien);
-    }
+   
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
     }
@@ -63,9 +60,9 @@ if (!empty($_POST)) {
 
         //Luu vao database
         if ($id == '') {
-            $sql = 'insert into phieunhap (MaNCC,NgayNhap,MaNV,TongTien) values ( "' . $mancc . '", "' . $ngaynhap . '","' . $manv . '", "' . $tongtien . '" )  ';
+            $sql = 'insert into phieunhap (MaNCC,NgayNhap,MaNV) values ( "' . $mancc . '", "' . $ngaynhap . '","' . $manv . '")  ';
         } else {
-            $sql = 'update phieunhap set  MaNCC = "' . $mancc . '",NgayNhap = "' . $ngaynhap . '",MaNV ="' . $manv . '",TongTien = "' . $tongtien . '" where MaPN = "' . $id . '" ';
+            $sql = 'update phieunhap set  MaNCC = "' . $mancc . '",NgayNhap = "' . $ngaynhap . '",MaNV ="' . $manv . '" where MaPN = "' . $id . '" ';
         }
 
         execute($sql);
@@ -134,10 +131,7 @@ include('./navbar.php');
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="tongtien"> Tổng Tiền:</label>
-            <input type="number" class="form-control" name="tongtien" id="tongtien" value="<?= $tongtien ?>"></textarea>
-        </div>
+   
 
 
 
